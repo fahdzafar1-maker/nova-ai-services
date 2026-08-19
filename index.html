@@ -121,12 +121,12 @@
   }
   .demo-top{
     display:flex;justify-content:space-between;align-items:center;padding:16px 24px;
-    border-bottom:1px solid var(--line);font-size:13px;background:var(--bg-alt);
+    border-bottom:1px solid var(--line);font-size:13px;background:var(--bg-alt);gap:12px;flex-wrap:wrap;
   }
   .demo-top .badge{color:var(--accent);font-weight:600;display:flex;align-items:center;gap:8px;}
   .demo-top .badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);}
   .demo-body{padding:32px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:36px;}
-  @media(max-width:760px){.demo-body{grid-template-columns:1fr;}}
+  @media(max-width:760px){.demo-body{grid-template-columns:1fr;padding:24px;}}
   .demo-copy h3{font-family:var(--display);font-size:23px;color:var(--navy);font-weight:700;}
   .demo-copy p{font-size:14px;color:var(--ink-dim);margin-top:14px;line-height:1.75;}
   .demo-copy ul{margin-top:18px;list-style:none;}
@@ -138,13 +138,13 @@
   }
   .chat-frame-top{padding:10px 16px;border-bottom:1px solid var(--line);font-size:11.5px;color:var(--ink-dim);font-weight:500;}
   .chat-body{flex:1;padding:18px;font-size:13px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:280px;}
-  .msg{max-width:82%;padding:10px 13px;border-radius:8px;line-height:1.6;}
+  .msg{max-width:82%;padding:10px 13px;border-radius:8px;line-height:1.6;white-space:pre-wrap;}
   .msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;color:var(--navy-soft);}
   .msg.user{background:var(--navy);align-self:flex-end;color:#fff;}
   .chat-input-row{display:flex;gap:8px;padding:14px;border-top:1px solid var(--line);}
   .chat-input-row input{
     flex:1;background:#fff;border:1px solid var(--line);border-radius:6px;padding:10px 12px;
-    color:var(--navy);font-size:13px;
+    color:var(--navy);font-size:13px;min-width:0;
   }
   .chat-input-row input:focus{outline:none;border-color:var(--accent);}
   .chat-input-row button{
@@ -152,6 +152,7 @@
     font-size:13px;font-weight:600;cursor:pointer;
   }
   .chat-input-row button:hover{background:var(--accent-hover);}
+  .chat-input-row button:disabled{opacity:0.6;cursor:not-allowed;}
   .chat-note{font-size:11px;color:var(--ink-dim);padding:8px 14px;border-top:1px solid var(--line);}
 
   .pricing-grid{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
@@ -170,10 +171,11 @@
   .price-card:not(.featured) .price-cta:hover{border-color:var(--navy);}
 
   .case-card{margin-top:44px;border:1px solid var(--line);border-radius:10px;padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:36px;background:#fff;}
-  @media(max-width:760px){.case-card{grid-template-columns:1fr;}}
+  @media(max-width:760px){.case-card{grid-template-columns:1fr;gap:24px;padding:24px;}}
   .case-tag{font-size:11.5px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.04em;}
   .case-card h3{font-family:var(--display);font-size:22px;color:var(--navy);font-weight:700;margin-top:12px;}
-  .case-stats{display:flex;gap:28px;margin-top:22px;}
+  .case-card p.case-intro{font-size:13.5px;color:var(--ink-dim);margin-top:12px;line-height:1.7;}
+  .case-stats{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap;}
   .case-stat b{display:block;font-family:var(--display);font-size:24px;color:var(--accent);font-weight:700;}
   .case-stat span{font-size:11px;color:var(--ink-dim);}
   .case-list{list-style:none;font-size:13px;color:var(--navy-soft);line-height:1.9;}
@@ -205,7 +207,7 @@
       <a href="#services">Services</a>
       <a href="#demo">Live Demo</a>
       <a href="#pricing">Pricing</a>
-      <a href="#work">Case Study</a>
+      <a href="#work">Case Studies</a>
     </div>
     <a class="nav-cta" href="https://wa.me/923339988443">Message Us</a>
   </div>
@@ -215,7 +217,7 @@
   <div class="wrap">
     <div class="eyebrow">AI Automation & Business Automation Services</div>
     <h1>Respond to every lead in seconds, <em>not hours.</em></h1>
-    <p class="hero-sub">FahdAIServices builds AI agents and automation systems for customer support, lead qualification, and CRM sync — so no inquiry sits unanswered while a competitor gets there first.</p>
+    <p class="hero-sub">FahdAIServices builds AI agents and automation systems for lead qualification, customer support, and CRM sync — so no inquiry sits unanswered while a competitor gets there first.</p>
     <div class="hero-cta-row">
       <a class="btn-primary" href="#demo">Talk to the live bot →</a>
       <a class="btn-ghost" href="#services">See what we build</a>
@@ -233,17 +235,17 @@
   <div class="wrap">
     <div class="section-tag">What we build</div>
     <h2 class="section-title">Four core AI automation systems, built on real production workflows.</h2>
-    <p class="section-desc">Everything below is running somewhere right now — not a mockup. Items marked Live you can test yourself.</p>
+    <p class="section-desc">Everything below is running somewhere right now — not a mockup. Items marked Live you can test yourself in the demo.</p>
 
     <div class="services-list">
       <div class="service-row">
         <span class="service-num">01</span>
         <div class="service-main">
           <div class="service-top">
-            <span class="service-title">WhatsApp AI Agent — Support & Ordering</span>
+            <span class="service-title">AI Lead Qualification Agent</span>
             <span class="service-badge live">Live</span>
           </div>
-          <p class="service-desc">Answers from your real menu or catalog, books orders with full details, and notifies your staff instantly — auto-detects English, Urdu, or Roman Urdu.</p>
+          <p class="service-desc">Every inbound enquiry gets answered instantly, qualified through natural conversation, and scored hot, warm, or cold — with budget, timeline, and requirements captured automatically.</p>
           <a class="service-link" href="#demo">Try it live →</a>
         </div>
       </div>
@@ -252,11 +254,11 @@
         <span class="service-num">02</span>
         <div class="service-main">
           <div class="service-top">
-            <span class="service-title">AI Lead Qualification & Follow-Up Automation</span>
-            <span class="service-badge video">Video demo</span>
+            <span class="service-title">WhatsApp AI Agent</span>
+            <span class="service-badge live">Live</span>
           </div>
-          <p class="service-desc">A lead fills a form → AI scores it hot, warm, or cold → your CRM updates and the right follow-up fires automatically. Built for real estate, clinics, and any business where response speed decides the sale.</p>
-          <a class="service-link" href="#">Watch it score a lead →</a>
+          <p class="service-desc">The same agent, running on WhatsApp Business API. Answers from your real catalogue or listings, remembers the conversation, and auto-detects English, Urdu, or Roman Urdu.</p>
+          <a class="service-link" href="https://wa.me/923339988443">Message us to see it →</a>
         </div>
       </div>
 
@@ -264,11 +266,11 @@
         <span class="service-num">03</span>
         <div class="service-main">
           <div class="service-top">
-            <span class="service-title">CRM Automation (HubSpot & more)</span>
-            <span class="service-badge video">Video demo</span>
+            <span class="service-title">CRM & Team Notification Sync</span>
+            <span class="service-badge live">Live</span>
           </div>
-          <p class="service-desc">Your CRM wired directly into your inbound channels — contacts sync, deals update, and nothing falls through the cracks, with built-in retry logic so failures get caught, not lost.</p>
-          <a class="service-link" href="#">See it sync live →</a>
+          <p class="service-desc">Qualified leads land in your CRM or spreadsheet, your team gets a Slack alert, and hot leads trigger an instant email — all within seconds, with retry logic so failures get caught, not lost.</p>
+          <a class="service-link" href="#work">See how it works →</a>
         </div>
       </div>
 
@@ -276,11 +278,11 @@
         <span class="service-num">04</span>
         <div class="service-main">
           <div class="service-top">
-            <span class="service-title">Industry Automation — Clinics, Restaurants, Retail</span>
-            <span class="service-badge live">Case study</span>
+            <span class="service-title">Industry Setups — Real Estate, Clinics, Restaurants, Retail</span>
+            <span class="service-badge video">Case study</span>
           </div>
-          <p class="service-desc">The same core system, adapted to how your business actually works — appointment booking for clinics, order-taking for restaurants, catalog Q&A for retail.</p>
-          <a class="service-link" href="#work">Read the case study →</a>
+          <p class="service-desc">The same core system, adapted to how your business actually works — property enquiries for agencies, appointment booking for clinics, order-taking for restaurants, catalogue Q&A for retail.</p>
+          <a class="service-link" href="#work">Read the case studies →</a>
         </div>
       </div>
     </div>
@@ -307,25 +309,26 @@
     <div class="demo-panel">
       <div class="demo-top">
         <span class="badge">Live n8n workflow — no scripted responses</span>
-        <span>Restaurant Ordering Assistant</span>
+        <span>Real Estate Lead Assistant</span>
       </div>
       <div class="demo-body">
         <div class="demo-copy">
-          <h3>Ask it anything a real customer would.</h3>
-          <p>This is the exact AI Agent used in production for a real client — renamed for demo purposes. Menu knowledge, order booking, and staff notification all run through actual n8n nodes in the background.</p>
+          <h3>Ask it anything a real buyer would.</h3>
+          <p>This is a working AI agent for a demo real estate agency, "Skyline Properties" in Dubai. Property knowledge, lead scoring, CRM logging, and team alerts all run through live n8n nodes in the background — the same system we'd build for your business.</p>
           <ul>
-            <li>Ask for a menu item — it won't accept vague answers, it'll ask which one</li>
+            <li>Ask about a property — it answers from a real listings knowledge base</li>
+            <li>Mention a budget and timeline — watch it qualify you as a lead</li>
             <li>Switch languages mid-conversation (English / Urdu / Roman Urdu)</li>
-            <li>Complete an order — get an invoice-style summary back</li>
+            <li>Behind the scenes: lead saved to a sheet, team alerted on Slack</li>
           </ul>
         </div>
         <div class="chat-frame">
-          <div class="chat-frame-top"><span id="chatStatus">restaurant-assistant — connected</span></div>
+          <div class="chat-frame-top"><span id="chatStatus">skyline-assistant — connected</span></div>
           <div class="chat-body" id="chatBody">
-            <div class="msg bot">Welcome! What can I get started for you today?</div>
+            <div class="msg bot">Welcome to Skyline Properties! Are you looking to buy, rent, or invest in Dubai property today?</div>
           </div>
           <div class="chat-input-row">
-            <input type="text" id="chatInput" placeholder="Type a message... e.g. mujhe large pizza chahiye">
+            <input type="text" id="chatInput" placeholder="e.g. 2 bedroom apartment in Dubai Marina" autocomplete="off">
             <button type="button" id="chatSend">Send</button>
           </div>
           <div class="chat-note">// Live n8n webhook — real AI Agent, real response, no scripted replies.</div>
@@ -339,7 +342,7 @@
   <div class="wrap">
     <div class="section-tag">Pricing</div>
     <h2 class="section-title">Fixed setup, no surprise invoices later.</h2>
-    <p class="section-desc">Every project is scoped before we start. These are starting points for the WhatsApp/AI agent service — CRM and lead-automation work is quoted per complexity.</p>
+    <p class="section-desc">Every project is scoped before we start. These are starting points for the AI agent service — CRM and lead-automation work is quoted per complexity.</p>
 
     <div class="pricing-grid">
       <div class="price-card">
@@ -349,35 +352,36 @@
         <ul class="price-features">
           <li>1 channel (WhatsApp or website widget)</li>
           <li>Knowledge base (up to 50 items)</li>
-          <li>Order booking to Sheets</li>
+          <li>Lead capture to Google Sheets</li>
           <li>Basic error handling</li>
         </ul>
-        <a class="price-cta" href="#">Start here</a>
+        <a class="price-cta" href="https://wa.me/923339988443">Start here</a>
       </div>
       <div class="price-card featured">
         <div class="price-tier">Growth</div>
         <div class="price-amount">$249 <span>/ setup</span></div>
-        <div class="price-desc">Multi-channel, staff notifications, invoice summaries. The tier most clients need.</div>
+        <div class="price-desc">Multi-channel, AI lead scoring, and team alerts. The tier most clients need.</div>
         <ul class="price-features">
           <li>Up to 2 channels</li>
           <li>Full RAG knowledge base</li>
-          <li>Order booking + staff notifications</li>
+          <li>AI lead scoring (hot / warm / cold)</li>
+          <li>Slack + email team notifications</li>
           <li>Multilingual auto-detect</li>
           <li>1 month of adjustments included</li>
         </ul>
-        <a class="price-cta" href="#">Most popular</a>
+        <a class="price-cta" href="https://wa.me/923339988443">Most popular</a>
       </div>
       <div class="price-card">
         <div class="price-tier">Custom</div>
         <div class="price-amount">Let's talk</div>
-        <div class="price-desc">CRM integration, lead automation, or multi-location setups — scoped individually.</div>
+        <div class="price-desc">CRM integration, multi-location setups, or high-volume pipelines — scoped individually.</div>
         <ul class="price-features">
           <li>All channels + CRM sync</li>
-          <li>AI lead scoring pipelines</li>
+          <li>Custom lead scoring pipelines</li>
           <li>Custom retry & monitoring logic</li>
           <li>Ongoing maintenance retainer option</li>
         </ul>
-        <a class="price-cta" href="#">Book a call</a>
+        <a class="price-cta" href="https://wa.me/923339988443">Book a call</a>
       </div>
     </div>
   </div>
@@ -385,13 +389,38 @@
 
 <section class="section" id="work">
   <div class="wrap">
-    <div class="section-tag">Case study</div>
-    <h2 class="section-title">From walk-in orders to a 24/7 AI agent</h2>
+    <div class="section-tag">Case studies</div>
+    <h2 class="section-title">Two systems, both built end to end and running live.</h2>
 
     <div class="case-card">
       <div>
-        <div class="case-tag">WhatsApp · AI · Order Automation</div>
-        <h3>Problem: staff couldn't answer every message fast enough</h3>
+        <div class="case-tag">Real Estate · Lead Qualification · CRM · Slack</div>
+        <h3>Every enquiry qualified and routed before an agent picks up the phone</h3>
+        <p class="case-intro">Property enquiries arrive at all hours and go cold fast. This system answers instantly, qualifies the lead in conversation, and puts a scored, complete lead in front of the sales team within seconds.</p>
+        <div class="case-stats">
+          <div class="case-stat"><b>104</b><span>leads scored and routed in testing</span></div>
+          <div class="case-stat"><b>&lt;15s</b><span>from message to team alert</span></div>
+          <div class="case-stat"><b>3</b><span>channels: WhatsApp, website, email</span></div>
+        </div>
+      </div>
+      <div>
+        <ul class="case-list">
+          <li>Listings knowledge base — accurate prices, areas, and fees, never invented</li>
+          <li>Conversational qualification: purpose, budget, area, timeline</li>
+          <li>AI scoring: hot, warm, or cold, with a written reason</li>
+          <li>Lead logged to the CRM sheet with full details and source</li>
+          <li>Slack alert to the sales channel the moment a hot lead lands</li>
+          <li>Instant email to the assigned agent for hot leads only</li>
+          <li>Ad attribution captured — you see which campaign the lead came from</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div>
+        <div class="case-tag">Restaurant · WhatsApp · Order Automation</div>
+        <h3>From walk-in orders to a 24/7 WhatsApp ordering agent</h3>
+        <p class="case-intro">Staff couldn't answer every message fast enough during peak hours. The agent took over the whole conversation — from the first question to a confirmed, logged order.</p>
         <div class="case-stats">
           <div class="case-stat"><b>24/7</b><span>availability, zero added staff</span></div>
           <div class="case-stat"><b>3</b><span>languages auto-detected</span></div>
@@ -434,7 +463,9 @@
 
 <script>
 (function () {
-  const WEBHOOK_URL = "https://primary-production-8d9a.up.railway.app/webhook/realestate-chat
+  const WEBHOOK_URL = "https://primary-production-8d9a.up.railway.app/webhook/realestate-chat";
+  const AGENT_LABEL = "skyline-assistant";
+
   const chatBody = document.getElementById('chatBody');
   const chatInput = document.getElementById('chatInput');
   const chatSend = document.getElementById('chatSend');
@@ -467,7 +498,7 @@
     chatInput.disabled = true;
     chatSend.disabled = true;
     const typingEl = addMessage('...', 'bot');
-    chatStatus.textContent = 'restaurant-assistant — thinking...';
+    chatStatus.textContent = AGENT_LABEL + ' — thinking...';
 
     try {
       const res = await fetch(WEBHOOK_URL, {
@@ -485,11 +516,11 @@
       const data = await res.json().catch(() => null);
       const reply = extractReply(data);
 
-      typingEl.textContent = reply || "Hmm, no proper reply came back - check the webhook's response format.";
+      typingEl.textContent = reply || "No reply came back from the agent. Try sending that again.";
     } catch (err) {
-      typingEl.textContent = "Connection error - the n8n webhook might be inactive or unreachable. (" + err.message + ")";
+      typingEl.textContent = "Couldn't reach the agent right now. Try again in a moment, or message us on WhatsApp. (" + err.message + ")";
     } finally {
-      chatStatus.textContent = 'restaurant-assistant — connected';
+      chatStatus.textContent = AGENT_LABEL + ' — connected';
       chatInput.disabled = false;
       chatSend.disabled = false;
       chatInput.focus();
