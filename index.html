@@ -3,50 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FahdAIServices — AI Agency | Business & AI Automation Services</title>
+<title>FahdAIServices — AI Voice Agents & Automation | AI Receptionist, WhatsApp & CRM</title>
+<meta name="description" content="AI voice receptionists that answer every call, plus WhatsApp AI agents, lead qualification and CRM automation. Built on Vapi, n8n, OpenAI and RAG.">
+<link rel="canonical" href="https://fahdaiservices.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #FAFAF8;
-    --bg-panel: #FFFFFF;
-    --bg-alt: #F0F1F4;
-    --navy: #16233F;
-    --navy-soft: #3D4A66;
-    --ink-dim: #6B7280;
-    --accent: #F0721D;
-    --accent-dim: rgba(240, 114, 29, 0.10);
-    --accent-hover: #D9600F;
-    --line: rgba(22, 35, 63, 0.10);
+    --bg: #0B0B0D;
+    --bg-2: #111114;
+    --panel: #16161A;
+    --panel-2: #1D1D22;
+    --ink: #FFFFFF;
+    --ink-soft: rgba(255,255,255,0.86);
+    --ink-dim: rgba(255,255,255,0.56);
+    --accent: #A8111F;
+    --accent-hover: #C4162B;
+    --accent-2: #F04452;
+    --accent-dim: rgba(168,17,31,0.20);
+    --amber: #FFB84C;
+    --yellow: #FFC72E;
+    --line: rgba(255,255,255,0.12);
+    --line-red: rgba(168,17,31,0.60);
     --mono: 'Inter', sans-serif;
-    --display: 'Space Grotesk', sans-serif;
+    --display: 'Poppins', 'Space Grotesk', sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     background:var(--bg);
-    color:var(--navy-soft);
+    color:var(--ink-soft);
     font-family:var(--mono);
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
   a{color:inherit;text-decoration:none;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
-  ::selection{background:var(--accent-dim);color:var(--navy);}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+  ::selection{background:var(--accent);color:#fff;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--yellow);outline-offset:3px;}
+
+  .topbar{height:5px;background:linear-gradient(90deg,var(--accent) 0 62%,var(--yellow) 62% 100%);}
 
   nav{
     position:sticky;top:0;z-index:50;
-    background:rgba(250,250,248,0.92);
+    background:rgba(11,11,13,0.90);
     backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid var(--line-red);
   }
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;}
   .logo-block{display:flex;flex-direction:column;line-height:1.15;}
-  .logo{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-0.01em;color:var(--navy);}
-  .logo-tag{font-size:10.5px;color:var(--accent);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;}
+  .logo{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-0.01em;color:var(--ink);}
+  .logo-tag{font-size:10.5px;color:var(--accent-2);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;}
   .navlinks{display:flex;gap:32px;font-size:14px;color:var(--ink-dim);font-weight:500;}
-  .navlinks a:hover{color:var(--navy);}
+  .navlinks a:hover{color:var(--ink);}
   .nav-cta{
     font-size:14px;font-weight:600;padding:10px 20px;background:var(--accent);
     border-radius:6px;color:#fff;transition:all .2s;
@@ -54,50 +63,64 @@
   .nav-cta:hover{background:var(--accent-hover);}
   @media(max-width:760px){.navlinks{display:none;}}
 
-  .hero{padding:88px 0 60px;}
+  .hero{padding:88px 0 60px;position:relative;overflow:hidden;}
+  .hero::after{
+    content:'';position:absolute;top:-160px;right:-180px;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle,rgba(168,17,31,0.38) 0%,rgba(168,17,31,0) 70%);pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:1;}
   .eyebrow{
     font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:18px;
+    color:var(--accent-2);margin-bottom:18px;
   }
   h1{
     font-family:var(--display);
     font-size:clamp(34px, 5.2vw, 56px);font-weight:700;letter-spacing:-0.02em;
-    max-width:760px;line-height:1.1;color:var(--navy);
+    max-width:760px;line-height:1.1;color:var(--ink);
   }
-  h1 em{font-style:normal;color:var(--accent);}
-  .hero-sub{
-    font-size:17px;color:var(--ink-dim);max-width:540px;margin-top:22px;line-height:1.7;
-  }
+  h1 em{font-style:normal;color:var(--accent-2);}
+  .hero-sub{font-size:17px;color:var(--ink-dim);max-width:540px;margin-top:22px;line-height:1.7;}
   .hero-cta-row{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
   .btn-primary{
     font-size:15px;font-weight:600;padding:14px 26px;background:var(--accent);
-    color:#fff;border-radius:6px;transition:all .2s;box-shadow:0 4px 14px rgba(240,114,29,0.25);
+    color:#fff;border-radius:6px;transition:all .2s;box-shadow:0 6px 22px rgba(168,17,31,0.45);
   }
   .btn-primary:hover{background:var(--accent-hover);}
   .btn-ghost{
-    font-size:15px;font-weight:600;padding:14px 26px;border:1.5px solid var(--line);color:var(--navy);
+    font-size:15px;font-weight:600;padding:14px 26px;border:1.5px solid var(--line);color:var(--ink);
     border-radius:6px;transition:all .2s;
   }
-  .btn-ghost:hover{border-color:var(--navy);}
+  .btn-ghost:hover{border-color:var(--accent-2);color:var(--accent-2);}
 
-  .stat-row{display:flex;gap:48px;margin-top:60px;flex-wrap:wrap;padding-top:32px;border-top:1px solid var(--line);}
-  .stat b{display:block;font-family:var(--display);font-size:30px;color:var(--navy);font-weight:700;}
-  .stat span{font-size:12.5px;color:var(--ink-dim);}
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:54px;padding-top:0;border-top:none;}
+  @media(max-width:760px){.stat-row{grid-template-columns:1fr;}}
+  .stat{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:10px;padding:20px 22px;}
+  .stat b{display:block;font-family:var(--display);font-size:32px;color:var(--accent-2);font-weight:700;line-height:1.1;}
+  .stat span{font-size:12.5px;color:var(--ink-dim);display:block;margin-top:6px;}
 
   .section{padding:84px 0;border-top:1px solid var(--line);}
-  .section-tag{font-size:13px;font-weight:600;color:var(--accent);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:14px;}
-  .section-title{font-family:var(--display);font-size:clamp(26px,3.2vw,38px);font-weight:700;color:var(--navy);letter-spacing:-0.01em;max-width:600px;}
+  .section.tint{background:var(--bg-2);}
+  .section.dark{background:var(--bg);border-top:4px solid var(--accent);}
+  .section-tag{font-size:13px;font-weight:600;color:var(--accent-2);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:14px;}
+  .section.dark .section-tag{color:var(--yellow);}
+  .section-title{font-family:var(--display);font-size:clamp(26px,3.2vw,38px);font-weight:700;color:var(--ink);letter-spacing:-0.01em;max-width:600px;}
   .section-desc{font-size:15px;color:var(--ink-dim);max-width:540px;margin-top:14px;line-height:1.7;}
 
-  .services-list{margin-top:44px;display:flex;flex-direction:column;}
+  .services-list{margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  @media(max-width:860px){.services-list{grid-template-columns:1fr;}}
   .service-row{
-    display:flex;align-items:flex-start;gap:24px;padding:26px 0;border-top:1px solid var(--line);
+    display:flex;align-items:flex-start;gap:16px;padding:24px;background:var(--panel);
+    border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;transition:border-color .2s;
   }
-  .service-row:last-child{border-bottom:1px solid var(--line);}
-  .service-num{font-family:var(--display);font-size:14px;font-weight:600;color:var(--accent);min-width:28px;padding-top:2px;}
+  .service-row:hover{border-color:var(--line-red);border-left-color:var(--accent-2);}
+  .services-list .service-row:last-child{grid-column:1 / -1;}
+  .service-num{
+    font-family:var(--display);font-size:12px;font-weight:700;color:#fff;background:var(--accent);
+    min-width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;
+  }
   .service-main{flex:1;}
   .service-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-  .service-title{font-family:var(--display);font-size:19px;font-weight:600;color:var(--navy);}
+  .service-title{font-family:var(--display);font-size:19px;font-weight:600;color:var(--ink);}
   .service-badge{
     font-size:10.5px;font-weight:600;letter-spacing:0.03em;padding:3px 10px;border-radius:20px;
     text-transform:uppercase;
@@ -105,48 +128,52 @@
   .service-badge.live{color:#fff;background:var(--accent);}
   .service-badge.video{color:var(--ink-dim);border:1px solid var(--line);}
   .service-desc{font-size:14px;color:var(--ink-dim);margin-top:8px;max-width:560px;line-height:1.65;}
-  .service-link{font-size:13.5px;font-weight:600;color:var(--accent);margin-top:12px;display:inline-block;}
+  .service-link{font-size:13.5px;font-weight:600;color:var(--accent-2);margin-top:12px;display:inline-block;}
   .service-link:hover{text-decoration:underline;}
 
-  .more-services{margin-top:36px;padding:24px;background:var(--bg-alt);border-radius:10px;}
+  .more-services{margin-top:36px;padding:24px;background:var(--panel);border:1px solid var(--line);border-radius:10px;}
   .more-services-title{font-size:12.5px;font-weight:600;color:var(--ink-dim);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:14px;}
   .more-tags{display:flex;flex-wrap:wrap;gap:10px;}
   .more-tags span{
-    font-size:13px;color:var(--navy-soft);background:#fff;padding:7px 14px;border:1px solid var(--line);border-radius:20px;font-weight:500;
+    font-size:13px;color:var(--ink-soft);background:var(--panel-2);padding:7px 14px;
+    border:1px solid var(--line);border-radius:20px;font-weight:500;
   }
 
   .demo-panel{
-    margin-top:44px;border:1.5px solid var(--accent);border-radius:10px;overflow:hidden;background:#fff;
-    box-shadow:0 8px 30px rgba(22,35,63,0.06);
+    margin-top:44px;border:1.5px solid var(--line-red);border-radius:10px;overflow:hidden;background:var(--panel);
+    box-shadow:0 10px 40px rgba(0,0,0,0.45);
   }
   .demo-top{
     display:flex;justify-content:space-between;align-items:center;padding:16px 24px;
-    border-bottom:1px solid var(--line);font-size:13px;background:var(--bg-alt);gap:12px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);font-size:13px;background:rgba(255,255,255,0.04);
+    gap:12px;flex-wrap:wrap;color:var(--ink-dim);
   }
-  .demo-top .badge{color:var(--accent);font-weight:600;display:flex;align-items:center;gap:8px;}
-  .demo-top .badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);}
+  .demo-top .badge{color:var(--yellow);font-weight:600;display:flex;align-items:center;gap:8px;}
+  .demo-top .badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--yellow);}
   .demo-body{padding:32px;display:grid;grid-template-columns:0.9fr 1.1fr;gap:36px;}
   @media(max-width:760px){.demo-body{grid-template-columns:1fr;padding:24px;}}
-  .demo-copy h3{font-family:var(--display);font-size:23px;color:var(--navy);font-weight:700;}
+  .demo-copy h3{font-family:var(--display);font-size:23px;color:var(--ink);font-weight:700;}
   .demo-copy p{font-size:14px;color:var(--ink-dim);margin-top:14px;line-height:1.75;}
   .demo-copy ul{margin-top:18px;list-style:none;}
-  .demo-copy li{font-size:13.5px;color:var(--navy-soft);padding-left:20px;position:relative;margin-bottom:9px;}
-  .demo-copy li::before{content:'→';position:absolute;left:0;color:var(--accent);font-weight:700;}
+  .demo-copy li{font-size:13.5px;color:var(--ink-soft);padding-left:20px;position:relative;margin-bottom:9px;}
+  .demo-copy li::before{content:'→';position:absolute;left:0;color:var(--yellow);font-weight:700;}
+
   .chat-frame{
-    background:var(--bg-alt);border:1px solid var(--line);border-radius:8px;min-height:340px;
+    background:var(--panel-2);border:1px solid var(--line);border-radius:8px;min-height:340px;
     display:flex;flex-direction:column;
   }
   .chat-frame-top{padding:10px 16px;border-bottom:1px solid var(--line);font-size:11.5px;color:var(--ink-dim);font-weight:500;}
   .chat-body{flex:1;padding:18px;font-size:13px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:280px;}
   .msg{max-width:82%;padding:10px 13px;border-radius:8px;line-height:1.6;white-space:pre-wrap;}
-  .msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;color:var(--navy-soft);}
-  .msg.user{background:var(--navy);align-self:flex-end;color:#fff;}
+  .msg.bot{background:rgba(255,255,255,0.06);border:1px solid var(--line);align-self:flex-start;color:var(--ink-soft);}
+  .msg.user{background:var(--accent);align-self:flex-end;color:#fff;}
   .chat-input-row{display:flex;gap:8px;padding:14px;border-top:1px solid var(--line);}
   .chat-input-row input{
-    flex:1;background:#fff;border:1px solid var(--line);border-radius:6px;padding:10px 12px;
-    color:var(--navy);font-size:13px;min-width:0;
+    flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--line);border-radius:6px;padding:10px 12px;
+    color:var(--ink);font-size:13px;min-width:0;
   }
-  .chat-input-row input:focus{outline:none;border-color:var(--accent);}
+  .chat-input-row input::placeholder{color:rgba(255,255,255,0.38);}
+  .chat-input-row input:focus{outline:none;border-color:var(--accent-2);}
   .chat-input-row button{
     background:var(--accent);color:#fff;border:none;padding:0 18px;border-radius:6px;
     font-size:13px;font-weight:600;cursor:pointer;
@@ -155,48 +182,79 @@
   .chat-input-row button:disabled{opacity:0.6;cursor:not-allowed;}
   .chat-note{font-size:11px;color:var(--ink-dim);padding:8px 14px;border-top:1px solid var(--line);}
 
+  .voice-media{background:#000;border:1px solid var(--line);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;align-self:start;}
+  .voice-media video{width:100%;display:block;background:#000;aspect-ratio:16/9;object-fit:cover;}
+  .voice-media-note{font-size:11px;color:rgba(255,184,76,0.88);padding:10px 14px;line-height:1.5;}
+  .voice-call{
+    display:flex;align-items:center;gap:12px;margin-top:22px;padding:14px 16px;
+    background:rgba(168,17,31,0.30);border:1px solid rgba(255,199,46,0.35);border-radius:8px;flex-wrap:wrap;
+  }
+  .voice-call b{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:0.01em;}
+  .voice-call b a{color:var(--yellow);}
+  .voice-call b a:hover{color:var(--amber);}
+  .voice-call span{font-size:12px;color:var(--ink-dim);}
+  @media(max-width:760px){.voice-media{order:-1;margin-bottom:4px;}}
+  .voice-stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;}
+  .voice-stack span{
+    font-size:11.5px;color:var(--ink-soft);background:rgba(255,255,255,0.06);padding:5px 11px;
+    border-radius:20px;border:1px solid var(--line);font-weight:500;
+  }
+
   .pricing-grid{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   @media(max-width:900px){.pricing-grid{grid-template-columns:1fr;}}
-  .price-card{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:30px;display:flex;flex-direction:column;}
-  .price-card.featured{border-color:var(--accent);box-shadow:0 8px 24px rgba(240,114,29,0.12);}
-  .price-tier{font-size:12.5px;font-weight:600;color:var(--accent);letter-spacing:0.04em;text-transform:uppercase;}
-  .price-amount{font-family:var(--display);font-size:30px;font-weight:700;color:var(--navy);margin-top:12px;}
+  .price-card{background:var(--panel);border:1.5px solid var(--line);border-radius:10px;padding:30px;display:flex;flex-direction:column;}
+  .price-tier{font-size:12.5px;font-weight:600;color:var(--accent-2);letter-spacing:0.04em;text-transform:uppercase;}
+  .price-amount{font-family:var(--display);font-size:30px;font-weight:700;color:var(--ink);margin-top:12px;}
   .price-amount span{font-size:12.5px;color:var(--ink-dim);font-weight:400;}
   .price-desc{font-size:13px;color:var(--ink-dim);margin-top:10px;line-height:1.6;}
   .price-features{list-style:none;margin-top:20px;flex:1;}
-  .price-features li{font-size:12.5px;color:var(--navy-soft);padding:8px 0;border-top:1px solid var(--line);}
+  .price-features li{font-size:12.5px;color:var(--ink-soft);padding:8px 0;border-top:1px solid var(--line);}
   .price-features li:first-child{border-top:none;}
-  .price-cta{margin-top:22px;text-align:center;padding:11px;border:1.5px solid var(--line);border-radius:6px;font-size:13px;font-weight:600;transition:all .2s;color:var(--navy);}
-  .price-card.featured .price-cta{border-color:var(--accent);background:var(--accent);color:#fff;}
-  .price-card:not(.featured) .price-cta:hover{border-color:var(--navy);}
+  .price-cta{margin-top:22px;text-align:center;padding:11px;border:1.5px solid var(--line);border-radius:6px;font-size:13px;font-weight:600;transition:all .2s;color:var(--ink);}
+  .price-card:not(.featured) .price-cta:hover{border-color:var(--accent-2);color:var(--accent-2);}
+  .price-card.featured{background:var(--accent);border-color:var(--accent);box-shadow:0 12px 40px rgba(168,17,31,0.40);}
+  .price-card.featured .price-tier{color:var(--yellow);}
+  .price-card.featured .price-amount{color:#fff;}
+  .price-card.featured .price-amount span{color:rgba(255,255,255,0.66);}
+  .price-card.featured .price-desc{color:rgba(255,255,255,0.82);}
+  .price-card.featured .price-features li{color:#fff;border-top-color:rgba(255,255,255,0.24);}
+  .price-card.featured .price-cta{border-color:var(--yellow);background:var(--yellow);color:#0B0B0D;}
 
-  .case-card{margin-top:44px;border:1px solid var(--line);border-radius:10px;padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:36px;background:#fff;}
+  .case-card{
+    margin-top:44px;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:10px;padding:32px;display:grid;grid-template-columns:1fr 1fr;gap:36px;
+  }
   @media(max-width:760px){.case-card{grid-template-columns:1fr;gap:24px;padding:24px;}}
-  .case-tag{font-size:11.5px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.04em;}
-  .case-card h3{font-family:var(--display);font-size:22px;color:var(--navy);font-weight:700;margin-top:12px;}
+  .case-tag{font-size:11.5px;font-weight:600;color:var(--accent-2);text-transform:uppercase;letter-spacing:0.04em;}
+  .case-card h3{font-family:var(--display);font-size:22px;color:var(--ink);font-weight:700;margin-top:12px;}
   .case-card p.case-intro{font-size:13.5px;color:var(--ink-dim);margin-top:12px;line-height:1.7;}
-  .case-stats{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap;}
-  .case-stat b{display:block;font-family:var(--display);font-size:24px;color:var(--accent);font-weight:700;}
-  .case-stat span{font-size:11px;color:var(--ink-dim);}
-  .case-list{list-style:none;font-size:13px;color:var(--navy-soft);line-height:1.9;}
-  .case-list li::before{content:'— ';color:var(--accent);}
+  .case-stats{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap;}
+  .case-stat{background:var(--accent-dim);border:1px solid var(--line-red);border-radius:9px;padding:12px 16px;flex:1 1 120px;}
+  .case-stat b{display:block;font-family:var(--display);font-size:24px;color:var(--accent-2);font-weight:700;line-height:1.15;}
+  .case-stat span{font-size:11px;color:var(--ink-dim);display:block;margin-top:4px;}
+  .case-list{list-style:none;font-size:13px;color:var(--ink-soft);line-height:1.9;}
+  .case-list li::before{content:'— ';color:var(--accent-2);}
 
-  .cta-section{padding:84px 0;text-align:center;border-top:1px solid var(--line);background:var(--navy);}
+  .cta-section{padding:84px 0;text-align:center;border-top:4px solid var(--yellow);background:var(--accent);}
   .cta-section h2{font-family:var(--display);font-size:clamp(28px,4vw,42px);color:#fff;font-weight:700;max-width:560px;margin:0 auto;}
-  .cta-section p{font-size:14px;color:rgba(255,255,255,0.65);margin-top:16px;}
+  .cta-section p{font-size:14px;color:rgba(255,255,255,0.82);margin-top:16px;}
+  .cta-section .hl{color:var(--yellow);font-weight:600;}
   .cta-section .hero-cta-row{justify-content:center;}
-  .cta-section .btn-ghost{border-color:rgba(255,255,255,0.25);color:#fff;}
-  .cta-section .btn-ghost:hover{border-color:#fff;}
+  .cta-section .btn-primary{background:var(--yellow);color:#0B0B0D;box-shadow:0 6px 22px rgba(0,0,0,0.30);}
+  .cta-section .btn-primary:hover{background:var(--amber);}
+  .cta-section .btn-ghost{border-color:rgba(255,255,255,0.45);color:#fff;}
+  .cta-section .btn-ghost:hover{border-color:#fff;color:#fff;}
 
-  footer{border-top:1px solid var(--line);padding:36px 0;font-size:12.5px;color:var(--ink-dim);}
+  footer{border-top:1px solid var(--line);padding:36px 0;font-size:12.5px;color:var(--ink-dim);background:var(--bg);}
   footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;align-items:center;}
   .footer-contact{display:flex;gap:20px;flex-wrap:wrap;}
-  .footer-contact a{color:var(--navy-soft);font-weight:500;transition:color .2s;}
-  .footer-contact a:hover{color:var(--accent);}
+  .footer-contact a{color:var(--ink-soft);font-weight:500;transition:color .2s;}
+  .footer-contact a:hover{color:var(--accent-2);}
 </style>
 </head>
 <body>
 
+<div class="topbar"></div>
 <nav>
   <div class="wrap">
     <div class="logo-block">
@@ -204,6 +262,7 @@
       <span class="logo-tag">AI Automation Agency</span>
     </div>
     <div class="navlinks">
+      <a href="#voice">Voice Agent</a>
       <a href="#services">Services</a>
       <a href="#demo">Live Demo</a>
       <a href="#pricing">Pricing</a>
@@ -215,12 +274,12 @@
 
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow">AI Automation & Business Automation Services</div>
-    <h1>Respond to every lead in seconds, <em>not hours.</em></h1>
-    <p class="hero-sub">FahdAIServices builds AI agents and automation systems for lead qualification, customer support, and CRM sync — so no inquiry sits unanswered while a competitor gets there first.</p>
+    <div class="eyebrow">AI Voice Agents · WhatsApp AI · Business Automation</div>
+    <h1>Answer every call and every message, <em>in seconds.</em></h1>
+    <p class="hero-sub">FahdAIServices builds AI voice receptionists and AI agents that pick up the phone, qualify the lead in conversation, and write it straight into your CRM — so no enquiry sits unanswered while a competitor gets there first.</p>
     <div class="hero-cta-row">
-      <a class="btn-primary" href="#demo">Talk to the live bot →</a>
-      <a class="btn-ghost" href="#services">See what we build</a>
+      <a class="btn-primary" href="#voice">Hear the AI receptionist →</a>
+      <a class="btn-ghost" href="#demo">Talk to the live bot</a>
     </div>
 
     <div class="stat-row">
@@ -231,15 +290,79 @@
   </div>
 </section>
 
-<section class="section" id="services">
+<section class="section dark" id="voice">
+  <div class="wrap">
+    <div class="section-tag">New — AI Voice Receptionist</div>
+    <h2 class="section-title">Your phone rings at 11pm. The AI picks up.</h2>
+    <p class="section-desc">Not a chatbot — an actual voice on an actual phone line. It answers, checks your live data before it speaks, qualifies the caller, and hands your team a complete lead before they hang up.</p>
+
+    <div class="demo-panel">
+      <div class="demo-top">
+        <span class="badge">Real recorded call — nothing scripted</span>
+        <span>Skyline Properties · Dubai real estate</span>
+      </div>
+      <div class="demo-body">
+        <div class="demo-copy">
+          <h3>Every missed call is a lead your competitor answers.</h3>
+          <p>This receptionist handles inbound property calls for a Dubai agency. It searches their real listings mid-conversation, so prices and availability are true — never invented. Then it captures the lead, writes it to the CRM sheet, and alerts sales on Slack in seconds.</p>
+          <ul>
+            <li>Answers day, night and weekends — no voicemail, no queue</li>
+            <li>Checks your live listings or catalogue before it answers</li>
+            <li>Qualifies on type, area and budget, then takes the caller's details</li>
+            <li>Lead in your CRM and a Slack alert before the call ends</li>
+            <li>Waits through pauses and phone numbers spoken in pieces</li>
+            <li>Hands over to a human the moment the caller asks</li>
+          </ul>
+
+          <div class="voice-call">
+            <b><a href="tel:+16692080343">+1 (669) 208 0343</a></b>
+            <span>Demo line — call it and speak to the receptionist yourself.</span>
+          </div>
+
+          <div class="voice-stack">
+            <span>Vapi</span>
+            <span>n8n</span>
+            <span>OpenAI</span>
+            <span>Pinecone RAG</span>
+            <span>Google Sheets</span>
+            <span>Slack</span>
+            <span>Twilio</span>
+          </div>
+        </div>
+
+        <div class="voice-media">
+          <video controls preload="none" playsinline poster="/voice-demo-poster.jpg">
+            <source src="/skyline-voice-demo.mp4" type="video/mp4">
+            Your browser can't play this video. Message us on WhatsApp and we'll send it to you.
+          </video>
+          <div class="voice-media-note">// 2-minute recorded call — listen to the caller pause, the AI wait, and the lead land in the sheet.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section tint" id="services">
   <div class="wrap">
     <div class="section-tag">What we build</div>
-    <h2 class="section-title">Four core AI automation systems, built on real production workflows.</h2>
+    <h2 class="section-title">Five core AI automation systems, built on real production workflows.</h2>
     <p class="section-desc">Everything below is running somewhere right now — not a mockup. Items marked Live you can test yourself in the demo.</p>
 
     <div class="services-list">
       <div class="service-row">
         <span class="service-num">01</span>
+        <div class="service-main">
+          <div class="service-top">
+            <span class="service-title">AI Voice Receptionist</span>
+            <span class="service-badge live">Live</span>
+          </div>
+          <p class="service-desc">A real voice on a real phone line. It answers every inbound call, checks your live data before it speaks, qualifies the caller, saves the lead to your CRM and alerts your team — day, night or weekend.</p>
+          <a class="service-link" href="#voice">Hear a real call →</a>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <span class="service-num">02</span>
         <div class="service-main">
           <div class="service-top">
             <span class="service-title">AI Lead Qualification Agent</span>
@@ -251,7 +374,7 @@
       </div>
 
       <div class="service-row">
-        <span class="service-num">02</span>
+        <span class="service-num">03</span>
         <div class="service-main">
           <div class="service-top">
             <span class="service-title">WhatsApp AI Agent</span>
@@ -263,7 +386,7 @@
       </div>
 
       <div class="service-row">
-        <span class="service-num">03</span>
+        <span class="service-num">04</span>
         <div class="service-main">
           <div class="service-top">
             <span class="service-title">CRM & Team Notification Sync</span>
@@ -275,7 +398,7 @@
       </div>
 
       <div class="service-row">
-        <span class="service-num">04</span>
+        <span class="service-num">05</span>
         <div class="service-main">
           <div class="service-top">
             <span class="service-title">Industry Setups — Real Estate, Clinics, Restaurants, Retail</span>
@@ -338,11 +461,11 @@
   </div>
 </section>
 
-<section class="section" id="pricing">
+<section class="section tint" id="pricing">
   <div class="wrap">
     <div class="section-tag">Pricing</div>
     <h2 class="section-title">Fixed setup, no surprise invoices later.</h2>
-    <p class="section-desc">Every project is scoped before we start. These are starting points for the AI agent service — CRM and lead-automation work is quoted per complexity.</p>
+    <p class="section-desc">Every project is scoped before we start. These are starting points for the AI agent service — voice receptionist builds start at $249, and CRM or lead-automation work is quoted per complexity. Call and transcription charges run on your own Vapi or Twilio account.</p>
 
     <div class="pricing-grid">
       <div class="price-card">
@@ -381,7 +504,7 @@
           <li>Custom retry & monitoring logic</li>
           <li>Ongoing maintenance retainer option</li>
         </ul>
-        <a class="price-cta" href="https://wa.me/923339988443">Book a call</a>
+        <a class="price-cta" href="https://wa.me/923339988443">Get a quote</a>
       </div>
     </div>
   </div>
@@ -390,7 +513,31 @@
 <section class="section" id="work">
   <div class="wrap">
     <div class="section-tag">Case studies</div>
-    <h2 class="section-title">Two systems, both built end to end and running live.</h2>
+    <h2 class="section-title">Three systems, all built end to end and running live.</h2>
+
+    <div class="case-card">
+      <div>
+        <div class="case-tag">Real Estate · Voice · RAG · CRM · Slack</div>
+        <h3>An AI receptionist that answers the agency's phone, day or night</h3>
+        <p class="case-intro">A Dubai agency was losing leads to missed and after-hours calls. The receptionist answers every one, checks their live listings before it speaks so prices and availability are real, qualifies the caller on type, area and budget, then writes the lead to the CRM sheet and alerts sales on Slack.</p>
+        <div class="case-stats">
+          <div class="case-stat"><b>100%</b><span>of calls answered, day or night</span></div>
+          <div class="case-stat"><b>&lt;5s</b><span>from hang-up to Slack alert</span></div>
+          <div class="case-stat"><b>0</b><span>manual data entry</span></div>
+        </div>
+      </div>
+      <div>
+        <ul class="case-list">
+          <li>Live listings searched mid-call — never an invented price</li>
+          <li>Qualification on type, area, budget and timeline</li>
+          <li>Caller's name confirmed back before saving — no guessed spellings</li>
+          <li>Lead written to the CRM sheet with the caller's number and call ID</li>
+          <li>Slack alert to the sales channel the second the call ends</li>
+          <li>Waits through pauses and phone numbers spoken in pieces</li>
+          <li>Human handoff on request, plus an error workflow behind it</li>
+        </ul>
+      </div>
+    </div>
 
     <div class="case-card">
       <div>
@@ -442,11 +589,11 @@
 
 <section class="cta-section">
   <div class="wrap">
-    <h2>Want this running for your business?</h2>
-    <p>Test the live demo above, or message us directly — we'll scope it in one call.</p>
+    <h2>Want this answering your phone?</h2>
+    <p>Call the demo line at <a class="hl" href="tel:+16692080343">+1 (669) 208 0343</a> and speak to it yourself, or send us what your callers usually ask — we'll tell you honestly whether it fits.</p>
     <div class="hero-cta-row">
-      <a class="btn-primary" href="#demo">Try the live bot</a>
-      <a class="btn-ghost" href="https://wa.me/923339988443">Message on WhatsApp</a>
+      <a class="btn-primary" href="https://wa.me/923339988443">Message on WhatsApp</a>
+      <a class="btn-ghost" href="#voice">Hear the recorded call</a>
     </div>
   </div>
 </section>
