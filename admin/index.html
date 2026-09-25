@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>Leads — Fahd AI Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#031634;--navy-3:#0F3D80;--blue:#2B8FFF;--blue-deep:#1567E8;--ink:#132039;--muted:#5B6B85;--line:#E4EAF2;--bg:#F7F9FC;
+    --new:#1567E8;--contacted:#D98A0B;--won:#0E8A55;--lost:#8493AA;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;}
+  button,input,select,textarea{font:inherit;}
+  a{color:var(--blue-deep);}
+  :focus-visible{outline:3px solid #3DD8FF;outline-offset:2px;}
+  .hidden{display:none!important;}
+
+  .login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(120deg,var(--navy),var(--navy-3));}
+  .login form{width:min(380px,100%);background:#fff;border-radius:20px;padding:32px;box-shadow:0 24px 70px rgba(0,0,0,.35);}
+  .login h1{font-size:24px;font-weight:700;}
+  .login p{font-size:14px;color:var(--muted);margin-top:6px;}
+  .login label{display:block;font-size:14px;font-weight:500;margin:18px 0 7px;}
+  .login input{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--bg);}
+  .btn{border:0;cursor:pointer;background:var(--blue-deep);color:#fff;font-weight:600;border-radius:12px;padding:12px 18px;}
+  .login .btn{width:100%;margin-top:22px;padding:14px;}
+  .err{color:#C8283C;font-size:14px;margin-top:12px;min-height:20px;}
+
+  header{background:linear-gradient(120deg,var(--navy),var(--navy-3));color:#fff;}
+  .bar{max-width:1200px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .bar .mark{width:40px;height:40px;border-radius:12px;background:linear-gradient(145deg,#3B9BFF,#1560E0);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;}
+  .bar h1{font-size:20px;font-weight:600;}
+  .bar .sp{flex:1;}
+  .ghost{background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:10px;padding:9px 14px;cursor:pointer;font-size:14px;}
+  main{max-width:1200px;margin:0 auto;padding:24px;}
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;}
+  .tab{border:1px solid var(--line);background:#fff;border-radius:14px;padding:12px 18px;cursor:pointer;text-align:left;min-width:120px;}
+  .tab b{display:block;font-size:26px;font-weight:700;line-height:1.1;}
+  .tab span{font-size:13.5px;color:var(--muted);}
+  .tab[aria-pressed="true"]{border-color:var(--blue);box-shadow:0 0 0 3px rgba(43,143,255,.15);}
+  .search{margin-top:18px;width:100%;max-width:420px;border:1px solid var(--line);border-radius:12px;padding:11px 14px;background:#fff;}
+
+  .list{margin-top:18px;display:flex;flex-direction:column;gap:12px;}
+  .card{background:#fff;border:1px solid var(--line);border-left:5px solid var(--new);border-radius:14px;padding:16px 18px;
+    display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2fr) auto;gap:18px;align-items:start;}
+  .card[data-s="contacted"]{border-left-color:var(--contacted);}
+  .card[data-s="won"]{border-left-color:var(--won);}
+  .card[data-s="lost"]{border-left-color:var(--lost);opacity:.75;}
+  .who b{font-size:16px;font-weight:600;}
+  .who .c{display:block;font-size:14px;margin-top:3px;word-break:break-all;}
+  .who .meta{font-size:12.5px;color:var(--muted);margin-top:6px;}
+  .what .svc{display:inline-block;font-size:12.5px;font-weight:600;color:var(--blue-deep);background:#EAF3FF;border-radius:999px;padding:3px 10px;}
+  .what .biz{font-size:14px;font-weight:500;margin-top:6px;}
+  .what .msg{font-size:13.5px;color:var(--muted);margin-top:6px;white-space:pre-wrap;max-height:4.6em;overflow:hidden;line-height:1.5;}
+  .what .msg.open{max-height:none;}
+  .what .more{background:none;border:0;color:var(--blue-deep);font-size:13px;cursor:pointer;margin-top:4px;padding:0;}
+  .act{display:flex;flex-direction:column;gap:8px;min-width:150px;}
+  .act select{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--bg);}
+  .act a{font-size:13.5px;font-weight:600;text-align:center;border-radius:10px;padding:8px 10px;text-decoration:none;color:#fff;background:#25D366;}
+  .act a.mail{background:var(--blue-deep);}
+  .empty{background:#fff;border:1px dashed var(--line);border-radius:14px;padding:40px 20px;text-align:center;color:var(--muted);}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:10px;font-size:14px;}
+  @media(max-width:760px){.card{grid-template-columns:1fr;gap:12px;}.act{flex-direction:row;flex-wrap:wrap;}.act>*{flex:1;}.tab{min-width:0;flex:1;}}
+</style>
+</head>
+<body>
+
+<section class="login" id="loginView">
+  <form id="loginForm">
+    <h1>Leads dashboard</h1>
+    <p>Sign in to see enquiries from fahdaiservices.com</p>
+    <label for="em">Email</label><input id="em" type="email" required autocomplete="username">
+    <label for="pw">Password</label><input id="pw" type="password" required autocomplete="current-password">
+    <button class="btn" type="submit" id="loginBtn">Sign in</button>
+    <div class="err" id="loginErr" role="alert"></div>
+  </form>
+</section>
+
+<div id="appView" class="hidden">
+  <header><div class="bar">
+    <div class="mark">F</div><h1>Leads</h1><div class="sp"></div>
+    <button class="ghost" id="refresh" type="button">Refresh</button>
+    <button class="ghost" id="logout" type="button">Sign out</button>
+  </div></header>
+  <main>
+    <div class="tabs" id="tabs"></div>
+    <input class="search" id="q" type="search" placeholder="Search name, contact or business" aria-label="Search leads">
+    <div class="list" id="list"></div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script src="/config.js"></script>
+<script>
+(function () {
+  var C = window.FAS_CONFIG || {};
+  var sb = window.supabase.createClient(C.SUPABASE_URL, C.SUPABASE_KEY);
+  var STATUSES = [['all','All'],['new','New'],['contacted','Contacted'],['won','Won'],['lost','Lost']];
+  var leads = [], filter = 'new', term = '';
+  var $ = function (id) { return document.getElementById(id); };
+
+  function toast(t) { var d = document.createElement('div'); d.className = 'toast'; d.textContent = t; document.body.appendChild(d); setTimeout(function () { d.remove(); }, 2200); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]; }); }
+  function when(ts) { var d = new Date(ts); return d.toLocaleDateString(undefined, { day:'numeric', month:'short' }) + ', ' + d.toLocaleTimeString(undefined, { hour:'2-digit', minute:'2-digit' }); }
+
+  function show(signedIn) { $('loginView').classList.toggle('hidden', signedIn); $('appView').classList.toggle('hidden', !signedIn); if (signedIn) load(); }
+
+  function load() {
+    $('list').innerHTML = '<div class="empty">Loading leads…</div>';
+    sb.from('leads').select('*').order('created_at', { ascending: false }).limit(500).then(function (r) {
+      if (r.error) { $('list').innerHTML = '<div class="empty">Leads could not load: ' + esc(r.error.message) + '</div>'; return; }
+      leads = r.data || []; render();
+    });
+  }
+
+  function render() {
+    var counts = { all: leads.length, new: 0, contacted: 0, won: 0, lost: 0 };
+    leads.forEach(function (l) { counts[l.status] = (counts[l.status] || 0) + 1; });
+    $('tabs').innerHTML = STATUSES.map(function (s) {
+      return '<button class="tab" type="button" data-f="' + s[0] + '" aria-pressed="' + (filter === s[0]) + '"><b>' + counts[s[0]] + '</b><span>' + s[1] + '</span></button>';
+    }).join('');
+    var t = term.toLowerCase();
+    var rows = leads.filter(function (l) {
+      return (filter === 'all' || l.status === filter) &&
+        (!t || [l.name, l.contact, l.business].join(' ').toLowerCase().indexOf(t) > -1);
+    });
+    if (!rows.length) {
+      $('list').innerHTML = '<div class="empty">' + (leads.length ? 'No leads match this filter.' : 'No leads yet. Share fahdaiservices.com and new enquiries will appear here.') + '</div>';
+      return;
+    }
+    $('list').innerHTML = rows.map(function (l) {
+      var digits = (l.contact || '').replace(/\D/g, '');
+      var isMail = /@/.test(l.contact || '');
+      var link = isMail ? '<a class="mail" href="mailto:' + esc(l.contact) + '">Email</a>'
+                        : '<a href="https://wa.me/' + digits + '" target="_blank" rel="noopener">WhatsApp</a>';
+      var opts = STATUSES.slice(1).map(function (s) { return '<option value="' + s[0] + '"' + (l.status === s[0] ? ' selected' : '') + '>' + s[1] + '</option>'; }).join('');
+      return '<article class="card" data-s="' + esc(l.status) + '">' +
+        '<div class="who"><b>' + esc(l.name) + '</b><span class="c">' + esc(l.contact) + '</span>' +
+          '<div class="meta">' + when(l.created_at) + ' · via ' + esc(l.source) + '</div></div>' +
+        '<div class="what">' + (l.service ? '<span class="svc">' + esc(l.service) + '</span>' : '') +
+          (l.business ? '<div class="biz">' + esc(l.business) + '</div>' : '') +
+          (l.message ? '<div class="msg">' + esc(l.message) + '</div><button class="more" type="button">Show all</button>' : '') + '</div>' +
+        '<div class="act"><select data-id="' + l.id + '" aria-label="Lead status">' + opts + '</select>' + link + '</div>' +
+      '</article>';
+    }).join('');
+  }
+
+  $('tabs').addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (b) { filter = b.dataset.f; render(); } });
+  $('q').addEventListener('input', function (e) { term = e.target.value; render(); });
+  $('list').addEventListener('click', function (e) {
+    if (e.target.classList.contains('more')) { var m = e.target.previousElementSibling; m.classList.toggle('open'); e.target.textContent = m.classList.contains('open') ? 'Show less' : 'Show all'; }
+  });
+  $('list').addEventListener('change', function (e) {
+    var sel = e.target; if (!sel.dataset.id) return;
+    var id = sel.dataset.id, val = sel.value;
+    sb.from('leads').update({ status: val }).eq('id', id).then(function (r) {
+      if (r.error) { toast('Status not saved: ' + r.error.message); load(); return; }
+      leads.forEach(function (l) { if (l.id === id) l.status = val; });
+      toast('Marked as ' + val); render();
+    });
+  });
+
+  $('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault(); $('loginErr').textContent = ''; $('loginBtn').disabled = true;
+    sb.auth.signInWithPassword({ email: $('em').value.trim(), password: $('pw').value }).then(function (r) {
+      $('loginBtn').disabled = false;
+      if (r.error) { $('loginErr').textContent = 'Sign-in failed: ' + r.error.message; return; }
+      show(true);
+    });
+  });
+  $('logout').addEventListener('click', function () { sb.auth.signOut().then(function () { show(false); }); });
+  $('refresh').addEventListener('click', load);
+  sb.auth.getSession().then(function (r) { show(!!(r.data && r.data.session)); });
+})();
+</script>
+</body>
+</html>
