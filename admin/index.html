@@ -131,7 +131,7 @@
     $('list').innerHTML = rows.map(function (l) {
       var digits = (l.contact || '').replace(/\D/g, '');
       var isMail = /@/.test(l.contact || '');
-      var link = isMail ? '<a class="mail" href="mailto:' + esc(l.contact) + '">Email</a>'
+      var link = isMail ? '<a class="mail" href="https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(l.contact) + '&su=' + encodeURIComponent('Your request to Fahd AI Services') + '" target="_blank" rel="noopener">Email</a>'
                         : '<a href="https://wa.me/' + digits + '" target="_blank" rel="noopener">WhatsApp</a>';
       var opts = STATUSES.slice(1).map(function (s) { return '<option value="' + s[0] + '"' + (l.status === s[0] ? ' selected' : '') + '>' + s[1] + '</option>'; }).join('');
       return '<article class="card" data-s="' + esc(l.status) + '">' +
