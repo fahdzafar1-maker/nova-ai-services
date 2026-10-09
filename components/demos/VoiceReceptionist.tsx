@@ -31,7 +31,9 @@ const ACTIONS = [
 export function VoiceReceptionist() {
   const [state, setState] = useState<"idle" | "ringing" | "live" | "ended">("idle");
   const [idx, setIdx] = useState(-1);
-  const [sound, setSound] = useState(false);
+  const [sound, setSound] = useState(true);
+  const soundRef = useRef(true); // read live inside the call loop (state would be stale there)
+  const [hasRecording, setHasRecording] = useState(true);
   const [fields, setFields] = useState<[string, string][]>([]);
   const [actions, setActions] = useState<string[]>([]);
   const [secs, setSecs] = useState(0);
@@ -48,19 +50,40 @@ export function VoiceReceptionist() {
   }, [state]);
   useEffect(() => () => { cancelled.current = true; if ("speechSynthesis" in window) window.speechSynthesis.cancel(); }, []);
 
+  const getVoices = () => new Promise<SpeechSynthesisVoice[]>((resolve) => {
+    const v = window.speechSynthesis.getVoices();
+    if (v.length) return resolve(v);
+    const done = () => resolve(window.speechSynthesis.getVoices());
+    window.speechSynthesis.addEventListener("voiceschanged", done, { once: true });
+    setTimeout(done, 1200); // some browsers never fire the event
+  });
+
   const say = (line: Line) => new Promise<void>((resolve) => {
     const ms = 900 + line.text.length * 38;
-    if (!sound || !canSpeak) { setTimeout(resolve, ms); return; }
-    const u = new SpeechSynthesisUtterance(line.text);
-    const voices = window.speechSynthesis.getVoices().filter((v) => v.lang.startsWith("en"));
-    const female = voices.find((v) => /female|samantha|zira|aria|jenny|google uk english female/i.test(v.name)) || voices[0];
-    const male = voices.find((v) => /male|daniel|david|guy|google uk english male/i.test(v.name) && v !== female) || voices[1] || voices[0];
-    u.voice = (line.who === "agent" ? female : male) || null;
-    u.rate = line.who === "agent" ? 1.02 : 1.08; u.pitch = line.who === "agent" ? 1.1 : 0.9;
-    u.onend = () => resolve(); u.onerror = () => resolve();
-    window.speechSynthesis.speak(u);
-    setTimeout(resolve, ms + 6000); // safety
+    if (!soundRef.current || !("speechSynthesis" in window)) { setTimeout(resolve, ms); return; }
+    getVoices().then((all) => {
+      if (cancelled.current) return resolve();
+      const voices = all.filter((v) => v.lang.toLowerCase().startsWith("en"));
+      const female = voices.find((v) => /female|samantha|zira|aria|jenny|libby|sonia|google uk english female|google us english/i.test(v.name)) || voices[0];
+      const male = voices.find((v) => v !== female && /male|daniel|david|guy|ryan|google uk english male/i.test(v.name)) || voices.find((v) => v !== female) || voices[0];
+      const u = new SpeechSynthesisUtterance(line.text);
+      if (line.who === "agent" ? female : male) u.voice = (line.who === "agent" ? female : male)!;
+      u.lang = u.voice?.lang || "en-US";
+      u.rate = line.who === "agent" ? 1.02 : 1.08; u.pitch = line.who === "agent" ? 1.1 : 0.9;
+      let finished = false;
+      const end = () => { if (!finished) { finished = true; resolve(); } };
+      u.onend = end; u.onerror = end;
+      window.speechSynthesis.resume(); // Chrome sometimes starts paused
+      window.speechSynthesis.speak(u);
+      setTimeout(end, ms + 8000); // safety
+    });
   });
+
+  const toggleSound = () => {
+    const next = !soundRef.current;
+    soundRef.current = next; setSound(next);
+    if (!next && "speechSynthesis" in window) window.speechSynthesis.cancel();
+  };
 
   async function start() {
     cancelled.current = false; setFields([]); setActions([]); setIdx(-1); setSecs(0);
@@ -86,6 +109,7 @@ export function VoiceReceptionist() {
   const mmss = `${String(Math.floor(secs / 60)).padStart(2, "0")}:${String(secs % 60).padStart(2, "0")}`;
 
   return (
+    <>
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.9fr]">
       <div className="card relative overflow-hidden p-6 sm:p-8">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(43,143,255,.18),transparent_60%)]" />
@@ -114,12 +138,12 @@ export function VoiceReceptionist() {
               <button onClick={hangup} className="btn !bg-rose-500/90 text-white hover:!bg-rose-500">End call</button>
             )}
             {canSpeak && (
-              <button onClick={() => setSound((s) => !s)} aria-pressed={sound} className={`btn-ghost ${sound ? "!border-cyan/60 text-cyan" : ""}`}>
+              <button onClick={toggleSound} aria-pressed={sound} className={`btn-ghost ${sound ? "!border-cyan/60 text-cyan" : ""}`}>
                 <Icon name="volume" className="h-4 w-4" /> Voice {sound ? "on" : "off"}
               </button>
             )}
           </div>
-          {canSpeak && <p className="mt-2 text-[11px] text-silver-600">Turn voice on to hear the call (uses your browser's built-in voices; the real agent uses a natural neural voice).</p>}
+          {canSpeak && <p className="mt-2 text-[11px] text-silver-600">Simulation uses your browser's built-in voices (check your volume). The real agent uses a natural neural voice — listen to the recording below.</p>}
         </div>
         <div ref={logRef} className="relative mt-6 max-h-64 space-y-2 overflow-y-auto rounded-2xl border border-white/[0.06] bg-night-950/70 p-4" aria-live="polite">
           {idx < 0 ? <p className="text-center text-sm text-silver-600">Live transcript appears here.</p> : CALL.slice(0, idx + 1).map((l, i) => (
@@ -165,5 +189,16 @@ export function VoiceReceptionist() {
         </div>
       </div>
     </div>
+    {hasRecording && (
+      <div className="card mt-6 grid gap-5 p-6 md:grid-cols-[1fr_1.2fr] md:items-center">
+        <div>
+          <p className="eyebrow">Real recording</p>
+          <h3 className="mt-2 font-display text-xl font-semibold text-white">Hear the live Skyline agent</h3>
+          <p className="mt-2 text-sm leading-relaxed text-silver-400">A real call with the production voice agent (Vapi + n8n), with the natural neural voice clients hear on the phone.</p>
+        </div>
+        <video className="w-full rounded-2xl border border-white/10 bg-night-950" src="/demos/skyline-voice-demo.mp4" controls preload="metadata" playsInline onError={() => setHasRecording(false)} aria-label="Recording of the Skyline AI voice receptionist" />
+      </div>
+    )}
+    </>
   );
 }
