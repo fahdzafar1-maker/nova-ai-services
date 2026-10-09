@@ -12,24 +12,55 @@ import { SITE } from "@/lib/site";
 export const runtime = "nodejs";
 export const maxDuration = 30;
 
-async function callGemini(system: string, messages: { role: "user" | "assistant"; content: string }[]): Promise<AssistantOutput | null> {
-  const { geminiKey, geminiModel } = serverEnv();
-  if (!geminiKey) return null;
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(geminiModel)}:generateContent`, {
+function parseJson(text: string): AssistantOutput {
+  const t = text.trim().replace(/^```(?:json)?\s*/i, "").replace(/```$/, "").trim();
+  try { return JSON.parse(t) as AssistantOutput; } catch {
+    const i = t.indexOf("{"), j = t.lastIndexOf("}");
+    if (i >= 0 && j > i) return JSON.parse(t.slice(i, j + 1)) as AssistantOutput;
+    throw new Error("ai_bad_json");
+  }
+}
+
+async function geminiRequest(model: string, key: string, system: string, messages: { role: "user" | "assistant"; content: string }[]) {
+  return fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`, {
     method: "POST",
-    headers: { "Content-Type": "application/json", "x-goog-api-key": geminiKey },
+    headers: { "Content-Type": "application/json", "x-goog-api-key": key },
     body: JSON.stringify({
       systemInstruction: { parts: [{ text: system }] },
       contents: messages.map((m) => ({ role: m.role === "assistant" ? "model" : "user", parts: [{ text: m.content }] })),
-      generationConfig: { temperature: 0.4, maxOutputTokens: 900, responseMimeType: "application/json", responseSchema: RESPONSE_SCHEMA },
+      generationConfig: {
+        temperature: 0.4,
+        maxOutputTokens: 2048,
+        responseMimeType: "application/json",
+        responseSchema: RESPONSE_SCHEMA,
+        // 2.5 models "think" by default and those tokens count against the output limit; a front-desk reply doesn't need it.
+        ...(model.includes("2.5") && !model.includes("pro") ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
+      },
     }),
     signal: AbortSignal.timeout(20000),
   });
-  if (!res.ok) { console.error("[chat] gemini http", res.status); throw new Error("ai_unavailable"); }
-  const json = await res.json();
-  const text: string | undefined = json?.candidates?.[0]?.content?.parts?.map((p: { text?: string }) => p.text ?? "").join("");
-  if (!text) throw new Error("ai_empty");
-  return JSON.parse(text) as AssistantOutput;
+}
+
+async function callGemini(system: string, messages: { role: "user" | "assistant"; content: string }[]): Promise<AssistantOutput | null> {
+  const { geminiKey, geminiModel } = serverEnv();
+  if (!geminiKey) return null;
+  const models = Array.from(new Set([geminiModel, "gemini-2.5-flash", "gemini-2.0-flash"]));
+  let lastErr = "";
+  for (const model of models) {
+    const res = await geminiRequest(model, geminiKey, system, messages);
+    if (!res.ok) {
+      const body = (await res.text().catch(() => "")).slice(0, 300);
+      lastErr = `${model} HTTP ${res.status} ${body}`;
+      console.error("[chat] gemini error", lastErr);
+      if (res.status === 404 || res.status === 400) continue; // wrong model name / unsupported option: try the next model
+      break; // bad key (401/403), quota (429) or outage: don't hammer the API
+    }
+    const json = await res.json();
+    const text: string | undefined = json?.candidates?.[0]?.content?.parts?.map((p: { text?: string }) => p.text ?? "").join("");
+    if (!text) { lastErr = `${model} empty (${json?.candidates?.[0]?.finishReason ?? json?.promptFeedback?.blockReason ?? "unknown"})`; console.error("[chat]", lastErr); continue; }
+    return parseJson(text);
+  }
+  throw new Error(lastErr || "ai_unavailable");
 }
 
 /** Guard against leaking secrets or the prompt, and keep replies short. */
@@ -64,8 +95,9 @@ export async function POST(req: Request) {
   try {
     const ai = await callGemini(buildSystemPrompt(services, demos), messages);
     if (ai) out = ai; else { out = offlineReply(lastUser, services); mode = "offline"; }
-  } catch {
-    out = { reply: `I'm having trouble answering right now. You can reach ${SITE.founder} directly on WhatsApp (${SITE.whatsappLink}) or use the form at /contact.`, intent: "handoff", action: "handoff", consent_given: false, lead: {}, suggestions: ["Open contact form"] };
+  } catch (e) {
+    console.error("[chat] falling back to offline mode:", e instanceof Error ? e.message : e);
+    out = offlineReply(lastUser, services);
     mode = "offline";
   }
 
