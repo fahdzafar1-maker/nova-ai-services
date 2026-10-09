@@ -1,0 +1,893 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Aurelle Aesthetics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: luxury med-spa — living "serum" canvas behind an oversized serif headline, bento treatments, method, priced menu, guided booking, then the AI front desk. */
+:root{
+  --pearl:#f3f1f4; --surface:#ffffff; --ink:#19161d; --muted:#6b6472; --line:#e5e0e8;
+  --plum:#7b3f63; --plum-ink:#6a3354; --plum-wash:#f1e4ec;
+  --blob1:#f2c4d3; --blob2:#d9c8f0; --blob3:#f9dccb; --blob4:#c9e4dd;
+  --good:#2f8f6a; --good-wash:#e2f3ec; --good-ink:#1f6b4e;
+  --warn:#c98a1b; --warn-wash:#fbf0dc; --warn-ink:#8a5d0e;
+  --bad:#c24b5a; --bad-wash:#fbe6e9; --bad-ink:#9b2f3e;
+  --info:#3f6fb5; --info-wash:#e5eefa; --info-ink:#2d5490;
+  --display:"Gloock", "Didot", "Bodoni 72", Georgia, serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --shadow:0 1px 2px rgb(25 22 29 / .05), 0 24px 60px -30px rgb(25 22 29 / .35);
+  --d-bg:var(--pearl); --d-surface:var(--surface); --d-ink:var(--ink); --d-muted:var(--muted); --d-line:var(--line);
+  --d-accent:var(--plum); --d-accent-ink:var(--plum-ink); --d-accent-wash:var(--plum-wash); --d-on-accent:#fff;
+  --d-good:var(--good); --d-good-wash:var(--good-wash); --d-good-ink:var(--good-ink);
+  --d-warn:var(--warn); --d-warn-wash:var(--warn-wash); --d-warn-ink:var(--warn-ink);
+  --d-bad:var(--bad); --d-bad-wash:var(--bad-wash); --d-bad-ink:var(--bad-ink);
+  --d-info:var(--info); --d-info-wash:var(--info-wash); --d-info-ink:var(--info-ink);
+  --d-font:var(--body); --d-display:var(--display);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --pearl:#120f14; --surface:#1b171e; --ink:#f2edf4; --muted:#a79fae; --line:#2e2733;
+  --plum:#d697bb; --plum-ink:#e8b3cf; --plum-wash:#33212c;
+  --blob1:#5a2a40; --blob2:#3a2c5a; --blob3:#5a3a2a; --blob4:#21443d;
+  --good:#5cc79c; --good-wash:#173a2d; --good-ink:#8de0bd; --warn:#e6b04f; --warn-wash:#3a2c12; --warn-ink:#f2cd86;
+  --bad:#e57b88; --bad-wash:#3d1c22; --bad-ink:#f3a6b0; --info:#7fa7e6; --info-wash:#1c2a40; --info-ink:#aac6f2; --d-on-accent:#1b171e; color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --pearl:#120f14; --surface:#1b171e; --ink:#f2edf4; --muted:#a79fae; --line:#2e2733;
+  --plum:#d697bb; --plum-ink:#e8b3cf; --plum-wash:#33212c;
+  --blob1:#5a2a40; --blob2:#3a2c5a; --blob3:#5a3a2a; --blob4:#21443d;
+  --good:#5cc79c; --good-wash:#173a2d; --good-ink:#8de0bd; --warn:#e6b04f; --warn-wash:#3a2c12; --warn-ink:#f2cd86;
+  --bad:#e57b88; --bad-wash:#3d1c22; --bad-ink:#f3a6b0; --info:#7fa7e6; --info-wash:#1c2a40; --info-ink:#aac6f2; --d-on-accent:#1b171e; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--pearl);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+a{color:inherit}
+.wrap{max-width:1220px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);font-weight:400;letter-spacing:-.015em;text-wrap:balance;margin:0}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--plum-ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:15px 26px;font:700 15px var(--body);cursor:pointer;text-decoration:none;transition:transform .15s,background .15s,color .15s}
+.btn:active{transform:scale(.98)}
+.btn-ink{background:var(--ink);color:var(--pearl)}
+.btn-ink:hover{background:var(--plum)}
+.btn-glass{background:color-mix(in srgb,var(--surface) 70%,transparent);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line);backdrop-filter:blur(8px)}
+.btn-glass:hover{background:var(--surface)}
+.btn small{font-weight:600;opacity:.7}
+:focus-visible{outline:3px solid var(--plum);outline-offset:3px;border-radius:8px}
+.num{font-variant-numeric:tabular-nums}
+
+.demo-bar{background:var(--ink);color:var(--pearl);font-size:13px;text-align:center;padding:9px 16px;line-height:1.5}
+.demo-bar b{color:var(--blob1)}
+.demo-bar a{color:inherit;font-weight:700}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:color-mix(in srgb,var(--pearl) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:22px;height:74px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo svg{width:30px;height:30px}
+.logo b{font-family:var(--display);font-size:26px;font-weight:400;letter-spacing:.01em}
+.links{display:flex;gap:22px;margin-left:auto;font-size:14px;font-weight:600}
+.links a{text-decoration:none;color:var(--muted)}
+.links a:hover{color:var(--ink)}
+.cur{width:auto;font:700 13px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 10px}
+.nav .btn{padding:11px 20px}
+@media (max-width:980px){.links{display:none}.nav .cur{margin-left:auto}}
+@media (max-width:480px){.nav .btn{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+#serum{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-in{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:end;padding-block:84px 72px}
+.hero h1{font-size:clamp(54px,9vw,132px);line-height:.94}
+.hero h1 span{display:block;color:var(--plum-ink)}
+.hero .lead{font-size:19px;color:var(--muted);max-width:32em;margin:26px 0 32px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.glass{background:color-mix(in srgb,var(--surface) 72%,transparent);backdrop-filter:blur(14px);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);border-radius:22px;padding:20px;box-shadow:var(--shadow)}
+.hero-cards{display:grid;gap:14px}
+.slot{display:flex;align-items:center;gap:14px}
+.slot .av{width:48px;height:48px;border-radius:50%;background:linear-gradient(140deg,var(--blob1),var(--plum));display:grid;place-items:center;color:#fff;font-family:var(--display);font-size:18px}
+.slot small{display:block;color:var(--muted);font-size:13px}
+.times{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.times span{font-size:13px;font-weight:700;border:1px solid var(--line);border-radius:999px;padding:5px 10px;background:var(--surface)}
+.times span.on{background:var(--ink);color:var(--pearl);border-color:var(--ink)}
+.rate{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.rate b{font-family:var(--display);font-size:40px;line-height:1}
+.rate small{color:var(--muted)}
+.livebook{display:flex;align-items:center;gap:10px;font-size:14px}
+.livebook i{width:9px;height:9px;border-radius:50%;background:var(--good);flex:none;box-shadow:0 0 0 4px var(--good-wash)}
+@media (max-width:920px){.hero-in{grid-template-columns:1fr;padding-block:56px}}
+
+.marquee{overflow:hidden;border-bottom:1px solid var(--line);background:var(--surface)}
+.marquee div{display:flex;gap:42px;padding-block:16px;width:max-content;animation:slide 40s linear infinite;font-family:var(--display);font-size:24px;color:var(--muted)}
+.marquee span::after{content:"✦";margin-left:42px;color:var(--plum);font-size:14px;vertical-align:middle}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+section{padding-block:96px}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:end;margin-bottom:40px}
+.head h2{font-size:clamp(38px,5vw,68px);line-height:1.02;margin-top:10px}
+.head p{color:var(--muted);margin:0;max-width:34em;justify-self:end}
+@media (max-width:820px){.head{grid-template-columns:1fr}.head p{justify-self:start}}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(220px,auto);gap:16px}
+.tile{position:relative;overflow:hidden;border-radius:26px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;background:var(--surface);border:1px solid var(--line);min-width:0}
+.tile .art{position:absolute;inset:0;opacity:.9}
+.tile>*:not(.art){position:relative}
+.tile h3{font-size:32px;line-height:1.05}
+.tile p{color:var(--muted);margin:8px 0 0;font-size:15px;max-width:26em}
+.tile .row{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin-top:18px}
+.tile .from{font-size:13px;color:var(--muted)}
+.tile .from b{display:block;font-family:var(--display);font-size:28px;color:var(--ink);font-weight:400}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips span{font-size:12px;font-weight:700;background:color-mix(in srgb,var(--surface) 75%,transparent);border-radius:999px;padding:4px 10px}
+.t1{grid-column:span 3;grid-row:span 2}.t2{grid-column:span 3}.t3{grid-column:span 3}
+.t4{grid-column:span 2}.t5{grid-column:span 2}.t6{grid-column:span 2}
+@media (max-width:980px){.bento{grid-template-columns:1fr 1fr}.t1,.t2,.t3,.t4,.t5,.t6{grid-column:span 1;grid-row:span 1}.t1{grid-column:span 2}}
+@media (max-width:600px){.bento{grid-template-columns:1fr}.t1{grid-column:span 1}}
+
+/* method */
+.method{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:m}
+.step{border-top:1.5px solid var(--ink);padding-top:18px}
+.step b{font-family:var(--display);font-size:46px;font-weight:400;color:var(--plum-ink);line-height:1}
+.step h3{font-size:26px;margin:12px 0 6px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+@media (max-width:900px){.method{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.method{grid-template-columns:1fr}}
+
+/* proof */
+.proof{background:var(--ink);color:var(--pearl);border-radius:34px;padding:56px clamp(20px,4vw,56px)}
+.proof .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;border-bottom:1px solid color-mix(in srgb,var(--pearl) 18%,transparent);padding-bottom:36px}
+.proof .stats b{display:block;font-family:var(--display);font-size:clamp(40px,5vw,64px);font-weight:400;line-height:1}
+.proof .stats span{color:color-mix(in srgb,var(--pearl) 70%,transparent);font-size:14px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px}
+.quotes blockquote{margin:0}
+.quotes p{font-family:var(--display);font-size:22px;line-height:1.35;margin:0 0 14px}
+.quotes footer{font-size:13px;color:color-mix(in srgb,var(--pearl) 65%,transparent)}
+.quotes .stars{color:var(--blob1);letter-spacing:3px;margin-bottom:10px}
+@media (max-width:900px){.proof .stats{grid-template-columns:1fr 1fr}.quotes{grid-template-columns:1fr}}
+
+/* menu */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tab{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:9px 18px;font:700 14px var(--body);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--pearl);border-color:var(--ink)}
+.menu{background:var(--surface);border:1px solid var(--line);border-radius:26px;overflow:hidden}
+.mrow{display:grid;grid-template-columns:1fr auto auto;gap:24px;align-items:center;padding:24px 28px;border-top:1px solid var(--line)}
+.mrow:first-child{border-top:0}
+.mrow h3{font-size:26px}
+.mrow p{margin:4px 0 0;color:var(--muted);font-size:14.5px;max-width:44em}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.meta span{font-size:12px;font-weight:700;background:var(--pearl);border-radius:999px;padding:3px 10px;color:var(--muted)}
+.price{text-align:right;white-space:nowrap}
+.price b{font-family:var(--display);font-size:30px;font-weight:400}
+.price small{display:block;color:var(--muted);font-size:12px}
+.mrow .btn{padding:11px 20px;font-size:14px}
+@media (max-width:720px){.mrow{grid-template-columns:1fr;gap:10px;padding:20px}.price{text-align:left}}
+
+/* doctors */
+.docs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.doc{background:var(--surface);border:1px solid var(--line);border-radius:26px;overflow:hidden}
+.doc .ph{aspect-ratio:5/4;max-width:100%;display:grid;place-items:end start;padding:22px;font-family:var(--display);font-size:72px;color:#fff;line-height:1}
+.doc div.b{padding:22px}
+.doc h3{font-size:28px}
+.doc p{margin:6px 0 0;color:var(--muted);font-size:14.5px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.badges span{font-size:12px;font-weight:700;color:var(--good-ink);background:var(--good-wash);border-radius:999px;padding:3px 10px}
+@media (max-width:900px){.docs{grid-template-columns:1fr}}
+
+/* booking */
+.booking{display:grid;grid-template-columns:.8fr 1.2fr;gap:36px;align-items:start}
+.booking h2{font-size:clamp(38px,5vw,64px);line-height:1.02}
+.steps-ind{display:flex;gap:6px;margin:22px 0}
+.steps-ind span{flex:1;height:4px;border-radius:4px;background:var(--line)}
+.steps-ind span.on{background:var(--plum)}
+.bk{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:28px;box-shadow:var(--shadow);min-width:0}
+.bk h3{font-size:28px;margin-bottom:16px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{all:unset;cursor:pointer;border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;display:grid;gap:2px}
+.opt b{font-size:15px}.opt small{color:var(--muted)}
+.opt[aria-pressed="true"]{border-color:var(--plum);background:var(--plum-wash)}
+.opt:focus-visible{outline:3px solid var(--plum)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal button{all:unset;cursor:pointer;text-align:center;border-radius:12px;padding:8px 0;border:1px solid var(--line);font-weight:700;font-size:15px}
+.cal button small{display:block;font-weight:600;font-size:11px;color:var(--muted)}
+.cal button[aria-pressed="true"]{background:var(--ink);color:var(--pearl);border-color:var(--ink)}
+.cal button[aria-pressed="true"] small{color:inherit;opacity:.7}
+.cal button:disabled{opacity:.35;cursor:not-allowed}
+.slots{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.slots button{all:unset;cursor:pointer;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:700;font-size:14px}
+.slots button[aria-pressed="true"]{background:var(--plum);color:#fff;border-color:var(--plum)}
+.slots button:disabled{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:grid;gap:6px;font-size:13px;font-weight:700}
+input,select,textarea{font:500 15px var(--body);color:var(--ink);background:var(--pearl);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%;min-width:0}
+.nav-bk{display:flex;justify-content:space-between;gap:10px;margin-top:22px}
+.err{color:var(--bad-ink);font-size:14px;font-weight:600;margin-top:10px}
+.done{text-align:center;display:grid;gap:12px;justify-items:center}
+.done .tick{width:70px;height:70px;border-radius:50%;background:var(--good-wash);color:var(--good-ink);display:grid;place-items:center;font-size:34px}
+.summary{width:100%;background:var(--pearl);border-radius:16px;padding:14px 16px;display:grid;gap:6px;text-align:left;font-size:14px}
+.summary div{display:flex;justify-content:space-between;gap:10px}
+@media (max-width:900px){.booking{grid-template-columns:1fr}}
+@media (max-width:520px){.opts,.f2{grid-template-columns:1fr}.cal{grid-template-columns:repeat(4,1fr)}}
+
+/* locations + AI */
+.locs{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.loc{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:28px}
+.loc h3{font-size:34px}
+.loc dl{display:grid;grid-template-columns:110px 1fr;gap:8px 12px;margin:16px 0 0;font-size:15px}
+.loc dt{color:var(--muted)}
+.loc dd{margin:0}
+@media (max-width:820px){.locs{grid-template-columns:1fr}}
+.ai{position:relative;overflow:hidden;border-radius:34px;padding:56px clamp(20px,4vw,56px);background:linear-gradient(135deg,var(--plum-wash),var(--surface));border:1px solid var(--line);display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.ai h2{font-size:clamp(36px,4.6vw,60px);line-height:1.02;margin:10px 0 14px}
+.ai p{color:var(--muted);max-width:34em}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mini a{text-decoration:none;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;gap:2px;transition:transform .15s}
+.mini a:hover{transform:translateY(-2px)}
+.mini b{font-family:var(--display);font-size:42px;font-weight:400;line-height:1}
+.mini small{color:var(--muted);font-size:13px}
+@media (max-width:900px){.ai{grid-template-columns:1fr}}
+footer.site{border-top:1px solid var(--line);padding-block:40px;font-size:14px;color:var(--muted)}
+footer.site .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer.site a{font-weight:700;color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.marquee div{animation:none}}
+[hidden]{display:none!important}
+/* ===== Shared: AI front-desk dashboard + chat concierge (demo). Host page maps --d-* tokens. ===== */
+.dash{min-height:100vh;background:var(--d-bg);color:var(--d-ink);font-family:var(--d-font);display:grid;grid-template-columns:240px 1fr}
+.dash *{box-sizing:border-box}
+.d-side{background:var(--d-surface);border-right:1px solid var(--d-line);padding:20px 14px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh}
+.d-brand{display:flex;align-items:center;gap:10px;padding:6px 8px 18px;font-weight:700}
+.d-brand i{width:30px;height:30px;border-radius:9px;background:var(--d-accent);display:grid;place-items:center;color:var(--d-on-accent);font-style:normal;font-size:14px}
+.d-brand small{display:block;font-weight:500;color:var(--d-muted);font-size:12px}
+.d-nav{all:unset;display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:var(--d-muted);font-weight:600;font-size:14px;cursor:pointer}
+.d-nav:hover{background:var(--d-bg);color:var(--d-ink)}
+.d-nav[aria-current="page"]{background:var(--d-accent-wash);color:var(--d-ink)}
+.d-nav b{margin-left:auto;font-size:12px;background:var(--d-bg);border-radius:999px;padding:1px 8px;color:var(--d-muted)}
+.d-side .d-back{margin-top:auto;color:var(--d-muted);font-size:13px;text-decoration:none;padding:10px 12px}
+.d-main{min-width:0;padding:24px clamp(16px,3vw,36px) 48px;display:grid;gap:20px;align-content:start}
+.d-top{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.d-top h1{font-family:var(--d-display);font-size:clamp(26px,3vw,36px);margin:0;letter-spacing:-.01em}
+.d-top p{margin:4px 0 0;color:var(--d-muted);font-size:14px}
+.d-live{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;background:var(--d-surface);border:1px solid var(--d-line);border-radius:999px;padding:8px 14px}
+.d-live i{width:8px;height:8px;border-radius:50%;background:var(--d-good);box-shadow:0 0 0 0 var(--d-good);animation:dpulse 1.6s infinite}
+@keyframes dpulse{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.d-kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.d-kpi{all:unset;cursor:pointer;background:var(--d-surface);border:1px solid var(--d-line);border-radius:16px;padding:16px 18px;display:grid;gap:4px;position:relative;overflow:hidden;transition:transform .15s,border-color .15s}
+.d-kpi:hover{transform:translateY(-2px);border-color:var(--d-accent)}
+.d-kpi:focus-visible{outline:3px solid var(--d-accent);outline-offset:2px}
+.d-kpi small{color:var(--d-muted);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.d-kpi b{font-size:34px;font-variant-numeric:tabular-nums;line-height:1.1;font-family:var(--d-display)}
+.d-kpi span{font-size:12.5px;color:var(--d-muted)}
+.d-kpi em{font-style:normal;font-weight:700}
+.d-kpi .bar{position:absolute;left:0;top:0;bottom:0;width:4px}
+.d-kpi .go{font-size:12px;font-weight:700;color:var(--d-accent-ink)}
+.d-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:16px}
+.d-card{background:var(--d-surface);border:1px solid var(--d-line);border-radius:16px;padding:18px;min-width:0}
+.d-card h2{font-size:15px;margin:0 0 4px}
+.d-card .sub{color:var(--d-muted);font-size:13px;margin:0 0 12px}
+.d-card svg{display:block;width:100%;height:auto}
+.d-funnel{display:grid;gap:10px}
+.d-frow{display:grid;grid-template-columns:120px 1fr 56px;gap:10px;align-items:center;font-size:13px}
+.d-frow .t{height:26px;background:var(--d-bg);border-radius:8px;overflow:hidden}
+.d-frow .f{height:100%;background:var(--d-accent);border-radius:8px;opacity:.85}
+.d-frow b{text-align:right;font-variant-numeric:tabular-nums}
+.d-feed{display:grid;gap:2px;max-height:330px;overflow:auto}
+.d-ev{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:start;padding:9px 4px;border-bottom:1px solid var(--d-line);font-size:13px}
+.d-ev:last-child{border-bottom:0}
+.d-ev .ic{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:12px;font-weight:800}
+.d-ev time{color:var(--d-muted);font-size:12px;white-space:nowrap}
+.d-ev p{margin:0}.d-ev p span{color:var(--d-muted)}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700;white-space:nowrap}
+.pill::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.st-booked{background:var(--d-good-wash);color:var(--d-good-ink)}
+.st-forwarded{background:var(--d-warn-wash);color:var(--d-warn-ink)}
+.st-noreply{background:var(--d-bad-wash);color:var(--d-bad-ink)}
+.st-active{background:var(--d-info-wash);color:var(--d-info-ink)}
+.st-closed{background:var(--d-bg);color:var(--d-muted)}
+.d-rem{display:grid;gap:8px}
+.d-remrow{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;font-size:13px;padding:8px 10px;background:var(--d-bg);border-radius:10px}
+.d-remrow small{color:var(--d-muted);display:block}
+.d-toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:13px;font-weight:600;margin-bottom:10px}
+.d-switch{all:unset;width:40px;height:22px;border-radius:999px;background:var(--d-good);position:relative;cursor:pointer}
+.d-switch::after{content:"";position:absolute;top:3px;left:21px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s}
+.d-switch[aria-checked="false"]{background:var(--d-line)}
+.d-switch[aria-checked="false"]::after{left:3px}
+.d-link{all:unset;cursor:pointer;color:var(--d-accent-ink);font-weight:700;font-size:13px}
+/* CRM sheet */
+.crm-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.crm-chip{all:unset;cursor:pointer;border:1px solid var(--d-line);background:var(--d-surface);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600}
+.crm-chip[aria-pressed="true"]{background:var(--d-ink);color:var(--d-surface);border-color:var(--d-ink)}
+.crm-chip b{font-variant-numeric:tabular-nums;margin-left:4px;opacity:.7}
+.crm-search{margin-left:auto;font:500 14px var(--d-font);color:var(--d-ink);background:var(--d-surface);border:1px solid var(--d-line);border-radius:10px;padding:9px 12px;min-width:0;width:220px;max-width:100%}
+.sheet{overflow:auto;border:1px solid var(--d-line);border-radius:12px;background:var(--d-surface);max-height:70vh}
+.sheet table{border-collapse:separate;border-spacing:0;width:100%;min-width:1080px;font-size:13px}
+.sheet th,.sheet td{border-bottom:1px solid var(--d-line);border-right:1px solid var(--d-line);padding:9px 12px;text-align:left;vertical-align:top}
+.sheet thead th{position:sticky;top:0;background:var(--d-bg);z-index:2;font-size:12px;color:var(--d-muted);text-transform:uppercase;letter-spacing:.05em;cursor:pointer;white-space:nowrap}
+.sheet thead tr.letters th{top:0;font-size:11px;text-align:center;letter-spacing:0;cursor:default;color:var(--d-muted)}
+.sheet thead tr.names th{top:31px}
+.sheet td.rn,.sheet th.rn{background:var(--d-bg);color:var(--d-muted);text-align:center;width:44px;font-variant-numeric:tabular-nums;position:sticky;left:0;z-index:1}
+.sheet tbody tr{cursor:pointer}
+.sheet tbody tr:hover td{background:var(--d-accent-wash)}
+.sheet tbody tr:hover td.rn{background:var(--d-bg)}
+.sheet td.num{text-align:right;font-variant-numeric:tabular-nums}
+.sheet td .msg{display:block;max-width:280px;color:var(--d-muted)}
+/* drawer */
+.d-drawer{position:fixed;inset:0;z-index:80;background:rgb(0 0 0 / .35);display:flex;justify-content:flex-end}
+.d-drawer>div{width:min(460px,100%);height:100%;background:var(--d-surface);color:var(--d-ink);padding:22px;overflow:auto;display:grid;align-content:start;gap:14px;font-family:var(--d-font)}
+.d-drawer h3{margin:0;font-family:var(--d-display);font-size:24px}
+.d-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:13px}
+.d-meta div{background:var(--d-bg);border-radius:10px;padding:9px 10px}
+.d-meta small{display:block;color:var(--d-muted);font-size:11.5px}
+.d-thread{display:grid;gap:8px}
+.d-msg{max-width:85%;padding:9px 12px;border-radius:14px;font-size:13.5px;line-height:1.45}
+.d-msg.ai{background:var(--d-bg);border-bottom-left-radius:4px}
+.d-msg.cu{background:var(--d-accent);color:var(--d-on-accent);margin-left:auto;border-bottom-right-radius:4px}
+.d-msg small{display:block;opacity:.65;font-size:11px;margin-top:3px}
+.d-x{all:unset;cursor:pointer;justify-self:end;font-size:22px;line-height:1;color:var(--d-muted)}
+@media (max-width:1100px){.d-kpis{grid-template-columns:repeat(3,1fr)}.d-grid{grid-template-columns:1fr}}
+@media (max-width:820px){.dash{grid-template-columns:1fr}.d-side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--d-line)}.d-brand{width:100%;padding-bottom:6px}.d-side .d-back{margin-top:0}.d-kpis{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:420px){.d-kpis{grid-template-columns:1fr}.d-frow{grid-template-columns:90px 1fr 44px}}
+
+/* chat concierge */
+.cc-fab{all:unset;position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:60;cursor:pointer;display:flex;align-items:center;gap:10px;background:var(--d-ink);color:var(--d-surface);border-radius:999px;padding:12px 18px 12px 12px;font:700 14px var(--d-font);box-shadow:0 10px 30px -10px rgb(0 0 0 / .45)}
+.cc-fab i{width:30px;height:30px;border-radius:50%;background:var(--d-accent);display:grid;place-items:center;font-style:normal;color:var(--d-on-accent);font-size:13px}
+.cc{position:fixed;right:18px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:61;width:min(380px,calc(100vw - 32px));height:min(560px,calc(100vh - 120px));background:var(--d-surface);color:var(--d-ink);border:1px solid var(--d-line);border-radius:20px;box-shadow:0 30px 60px -20px rgb(0 0 0 / .45);display:grid;grid-template-rows:auto 1fr auto;overflow:hidden;font-family:var(--d-font)}
+.cc header{all:unset;display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--d-ink);color:var(--d-surface)}
+.cc header i{width:34px;height:34px;border-radius:50%;background:var(--d-accent);display:grid;place-items:center;font-style:normal;color:var(--d-on-accent);font-weight:800}
+.cc header small{display:block;opacity:.7;font-size:12px;font-weight:500}
+.cc header button{all:unset;cursor:pointer;margin-left:auto;font-size:22px;opacity:.8}
+.cc-log{overflow:auto;padding:14px;display:flex;flex-direction:column;gap:8px}
+.cc-log .d-msg{max-width:88%}
+.cc-quick{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
+.cc-quick button{all:unset;cursor:pointer;border:1px solid var(--d-accent);color:var(--d-accent-ink);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600}
+.cc form{display:flex;gap:8px;padding:10px;border-top:1px solid var(--d-line)}
+.cc input{flex:1;min-width:0;font:500 14px var(--d-font);color:var(--d-ink);background:var(--d-bg);border:1px solid var(--d-line);border-radius:10px;padding:10px 12px}
+.cc form button{all:unset;cursor:pointer;background:var(--d-accent);color:var(--d-on-accent);border-radius:10px;padding:0 14px;font-weight:700;font-size:14px}
+.cc-typing{display:inline-flex;gap:4px;padding:10px 12px;background:var(--d-bg);border-radius:14px;width:max-content}
+.cc-typing i{width:6px;height:6px;border-radius:50%;background:var(--d-muted);animation:ccdot 1s infinite}
+.cc-typing i:nth-child(2){animation-delay:.15s}.cc-typing i:nth-child(3){animation-delay:.3s}
+@keyframes ccdot{50%{opacity:.25;transform:translateY(-2px)}}
+.cc-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:90;background:var(--d-ink);color:var(--d-surface);padding:12px 18px;border-radius:12px;font:600 14px var(--d-font);box-shadow:0 10px 30px -10px rgb(0 0 0 / .5)}
+@media (prefers-reduced-motion:reduce){.d-live i,.cc-typing i{animation:none}}
+
+</style>
+
+<div id="site">
+<div class="demo-bar">Demo website for a skin &amp; aesthetics clinic · sample content · Want a website like this? <b>Fahd AI Services</b> · <a href="https://wa.me/923466998833" target="_blank" rel="noopener">WhatsApp +92 346 6998833</a> · <span style="user-select:all">fahdzafar73@gmail.com</span> · <a href="https://fahdaiservices.com" target="_blank" rel="noopener">fahdaiservices.com</a></div>
+
+<header class="top"><div class="wrap nav">
+  <a class="logo" href="#top" aria-label="Aurelle Aesthetics home"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="none" stroke="var(--plum)" stroke-width="1.5"/><path d="M9 22 L16 8 L23 22 M12 17 H20" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/></svg><b>Aurelle</b></a>
+  <nav class="links" aria-label="Main"><a href="#treatments">Treatments</a><a href="#method">Method</a><a href="#pricing">Pricing</a><a href="#doctors">Doctors</a><a href="#locations">Locations</a><a href="#dashboard">Admin</a></nav>
+  <select class="cur" id="cur" aria-label="Currency"><option value="PKR">PKR ₨</option><option value="USD">USD $</option><option value="AED">AED</option><option value="GBP">GBP £</option></select>
+  <a class="btn btn-ink" href="#book">Book consultation</a>
+</div></header>
+
+<main id="top">
+  <div class="hero">
+    <canvas id="serum" aria-hidden="true"></canvas>
+    <div class="wrap hero-in">
+      <div>
+        <div class="eyebrow">Dermatology &amp; aesthetics · Lahore · Dubai</div>
+        <h1>Skin, quietly <span>perfected.</span></h1>
+        <p class="lead">Consultant dermatologists, medical-grade lasers and natural-looking injectables. Every plan begins with a skin analysis, and nothing happens until you are sure.</p>
+        <div class="cta">
+          <a class="btn btn-ink" href="#book">Book a consultation</a>
+          <button class="btn btn-glass" data-chat>Ask Aria <small>AI concierge · 24/7</small></button>
+        </div>
+      </div>
+      <div class="hero-cards" aria-label="Clinic highlights">
+        <div class="glass"><div class="slot"><div class="av">MQ</div><div><b>Dr. Mahnoor Qazi</b><small>Next openings today, Lahore</small></div></div><div class="times"><span>2:00</span><span class="on">4:30</span><span>6:00</span><span>7:30</span></div></div>
+        <div class="glass rate"><div><b class="num">4.9</b><small>1,860 Google reviews</small></div><div style="text-align:right"><b class="num">24k+</b><small>treatments since 2014</small></div></div>
+        <div class="glass livebook"><i></i><span><b>3 people</b> are booking with Aria right now</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true"><div id="mq"></div></div>
+
+  <section id="treatments">
+    <div class="wrap">
+      <div class="head"><div><div class="eyebrow">Signature treatments</div><h2>Results you notice. Changes nobody can point to.</h2></div><p>Six treatments make up most of our work. Each one is matched to your skin type, including deeper South Asian and Middle Eastern skin tones.</p></div>
+      <div class="bento" id="bento"></div>
+    </div>
+  </section>
+
+  <section id="method" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><div><div class="eyebrow">The Aurelle method</div><h2>Four steps, the same for every patient.</h2></div><p>No upselling at the first visit. You leave with a written plan and a price, and decide at home.</p></div>
+      <div class="method">
+        <div class="step"><b>1</b><h3>Skin analysis</h3><p>3D imaging of pores, pigment and texture with your dermatologist.</p></div>
+        <div class="step"><b>2</b><h3>Written plan</h3><p>Treatments, number of sessions and full cost, in writing.</p></div>
+        <div class="step"><b>3</b><h3>Treatment</h3><p>Done by the same doctor, with numbing and aftercare kit included.</p></div>
+        <div class="step"><b>4</b><h3>Review at 2 weeks</h3><p>Photos compared side by side, and touch-ups when needed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="proof">
+        <div class="stats">
+          <div><b class="num">96%</b><span>would recommend us</span></div>
+          <div><b class="num">24,000+</b><span>treatments performed</span></div>
+          <div><b class="num">12</b><span>years in practice</span></div>
+          <div><b class="num">0</b><span>hidden fees</span></div>
+        </div>
+        <div class="quotes">
+          <blockquote><div class="stars">★★★★★</div><p>“Four peels for melasma and my skin is even again. Nobody pushed me into anything extra.”</p><footer>Ayesha K. · Lahore</footer></blockquote>
+          <blockquote><div class="stars">★★★★★</div><p>“I booked at midnight through the chat and had a slot the next evening. The doctor was wonderful.”</p><footer>Sophie M. · Dubai</footer></blockquote>
+          <blockquote><div class="stars">★★★★★</div><p>“Dr. Hamza told me I didn't need filler, only a little Botox. That honesty is why I keep coming back.”</p><footer>Omar A. · Dubai</footer></blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><div><div class="eyebrow">Pricing</div><h2>Every price, before you walk in.</h2></div><p>Per session. Packages of 3 or 6 sessions save up to 25%. Switch currency at the top of the page.</p></div>
+      <div class="tabs" role="tablist" aria-label="Treatment type" id="tabs"></div>
+      <div class="menu" id="menu" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <section id="doctors" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><div><div class="eyebrow">Your doctors</div><h2>Dermatologists, not technicians.</h2></div><p>Every injectable and laser treatment is done by a licensed consultant, registered in Pakistan or the UAE.</p></div>
+      <div class="docs">
+        <article class="doc"><div class="ph" style="background:linear-gradient(150deg,#e3a2b8,#7b3f63)">MQ</div><div class="b"><h3>Dr. Mahnoor Qazi</h3><p>Medical director · FCPS Dermatology · 12 years · Pigmentation, acne, lasers</p><div class="badges"><span>PMDC licensed</span><span>Lahore</span></div></div></article>
+        <article class="doc"><div class="ph" style="background:linear-gradient(150deg,#9fc3b8,#2f6f5f)">HR</div><div class="b"><h3>Dr. Hamza Rafiq</h3><p>MRCP (UK) Dermatology · 10 years · Injectables, facial balancing</p><div class="badges"><span>DHA licensed</span><span>Dubai</span></div></div></article>
+        <article class="doc"><div class="ph" style="background:linear-gradient(150deg,#d8b98f,#8a6440)">ST</div><div class="b"><h3>Dr. Sana Tirmizi</h3><p>MCPS Dermatology · 8 years · Hair loss, PRP, acne scars</p><div class="badges"><span>PMDC licensed</span><span>Lahore</span></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" style="padding-top:0">
+    <div class="wrap booking">
+      <div>
+        <div class="eyebrow">Book online</div>
+        <h2>Your consultation, in under a minute.</h2>
+        <p style="color:var(--muted)">The consultation fee is adjusted in your first treatment. You'll get a WhatsApp confirmation straight away and a reminder the day before.</p>
+        <div class="steps-ind" id="ind"><span></span><span></span><span></span><span></span></div>
+        <p style="color:var(--muted);font-size:14px;margin:0">Prefer to chat? <button class="btn btn-glass" style="padding:8px 14px;font-size:13px" data-chat>Ask Aria</button></p>
+      </div>
+      <div class="bk" id="bk" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="locations" style="padding-top:0">
+    <div class="wrap">
+      <div class="locs">
+        <div class="loc"><div class="eyebrow">Pakistan</div><h3>Lahore, Gulberg</h3><dl><dt>Address</dt><dd>14-B MM Alam Road, Gulberg III</dd><dt>Hours</dt><dd>Mon–Sat, 11:00 am – 9:00 pm</dd><dt>WhatsApp</dt><dd class="num">+92 300 1234567</dd></dl></div>
+        <div class="loc"><div class="eyebrow">United Arab Emirates</div><h3>Dubai, Jumeirah</h3><dl><dt>Address</dt><dd>Villa 21, Al Wasl Road, Jumeirah 2</dd><dt>Hours</dt><dd>Sat–Thu, 10:00 am – 10:00 pm</dd><dt>WhatsApp</dt><dd class="num">+971 50 123 4567</dd></dl></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="ai">
+        <div><div class="eyebrow">Behind the scenes</div><h2>An AI front desk that never sleeps.</h2><p>Aria answers WhatsApp, Instagram and website chats in seconds, books consultations straight into the calendar, forwards medical questions to the team, and follows up with anyone who goes quiet.</p><a class="btn btn-ink" href="#dashboard">Open the admin dashboard</a></div>
+        <div class="mini" id="mini"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site"><div class="wrap"><span>© 2026 Aurelle Aesthetics · demo website</span><span><a href="#dashboard">Admin dashboard (demo)</a> · Built by Fahd AI Services</span></div></footer>
+</div>
+
+<div id="dash" hidden></div>
+
+<script>
+/* ===== Shared demo engine: AI front-desk dashboard, CRM sheet and chat concierge. All data is generated sample data. ===== */
+function FrontDesk(cfg){
+  // seeded random so every visitor sees the same believable numbers
+  let seed = cfg.seed || 7;
+  const rnd = () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; };
+  const pick = a => a[Math.floor(rnd() * a.length)];
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+  const FIRST = ["Ayesha","Hira","Sara","Zainab","Mahnoor","Fatima","Usman","Bilal","Hamza","Ali","Omar","Imran","Sophie","Emily","James","Daniel","Olivia","Liam","Aisha","Noor","Layla","Yusuf","Khalid","Mariam","Rania","Ahmed","Hassan","Sana","Amna","Zara","Chloe","Ethan","Priya","Arjun","Leila","Tariq"];
+  const LAST = ["Khan","Malik","Qureshi","Siddiqui","Butt","Sheikh","Raza","Iqbal","Mitchell","Carter","Hughes","Patel","Al-Farsi","Haddad","Rahman","Chaudhry","Hussain","Mirza","Ali","Farooq","Bennett","Rossi","Nasser","Aziz"];
+  const PLACES = cfg.places;
+  const CHANNELS = [["WhatsApp",.46],["Instagram DM",.22],["Website chat",.2],["Facebook",.12]];
+  const chan = () => { let r = rnd(), a = 0; for (const [c,p] of CHANNELS){ a += p; if (r <= a) return c; } return "WhatsApp"; };
+  const STATUS = [["booked",cfg.counts.booked],["forwarded",cfg.counts.forwarded],["noreply",cfg.counts.noreply],["active",cfg.counts.active],["closed",cfg.counts.closed]];
+  const LABEL = {booked:cfg.words.booked, forwarded:"Forwarded to support", noreply:"No reply", active:"In conversation", closed:"Not interested"};
+  const now = new Date();
+  const hm = d => d.toLocaleTimeString("en-US",{hour:"numeric",minute:"2-digit"});
+  const day = d => d.toLocaleDateString("en-US",{weekday:"short",day:"numeric",month:"short"});
+
+  const leads = [];
+  let n = 0;
+  for (const [st, count] of STATUS){
+    for (let i = 0; i < count; i++){
+      n++;
+      const hoursAgo = Math.pow(rnd(), 1.4) * 13 + 0.1;
+      const at = new Date(now - hoursAgo * 3600e3);
+      const name = pick(FIRST) + " " + pick(LAST);
+      const place = pick(PLACES);
+      const interest = pick(cfg.interests);
+      const value = Math.round((cfg.value[0] + rnd() * (cfg.value[1] - cfg.value[0])) / 500) * 500;
+      const tail = String(10 + Math.floor(rnd() * 89));
+      const lead = {id:n, name, place, phone: place.code + " ••• ••• " + tail, channel: chan(), interest, status: st, at, value, owner: "AI agent " + cfg.agent};
+      if (st === "booked"){ const d = new Date(now.getTime() + (1 + Math.floor(rnd() * 6)) * 864e5); d.setHours(10 + Math.floor(rnd() * 8), rnd() > .5 ? 30 : 0); lead.next = cfg.words.bookedNext + " " + day(d) + ", " + hm(d); lead.last = pick(cfg.lines.booked); }
+      if (st === "forwarded"){ const why = pick(cfg.lines.forwardWhy); lead.next = "With " + pick(cfg.team) + " · " + why; lead.owner = "Human support"; lead.last = pick(cfg.lines.forwarded); lead.why = why; }
+      if (st === "noreply"){ const r = new Date(at.getTime() + 24 * 3600e3); lead.next = "Reminder 1 · " + day(r) + ", " + hm(r); lead.reminderAt = r; lead.last = pick(cfg.lines.noreply); }
+      if (st === "active"){ lead.next = cfg.agent + " is replying"; lead.last = pick(cfg.lines.active); }
+      if (st === "closed"){ lead.next = "Closed · " + pick(["Budget","Chose another provider","Just browsing","Wrong number"]); lead.last = pick(cfg.lines.closed); }
+      leads.push(lead);
+    }
+  }
+  leads.sort((a,b) => b.at - a.at);
+  const total = () => leads.length;
+  const count = st => leads.filter(l => l.status === st).length;
+
+  // ---------- dashboard markup ----------
+  const root = document.getElementById(cfg.mount);
+  const site = document.getElementById(cfg.site);
+  let view = "overview", filter = "all", query = "", sortKey = "at", sortDir = -1;
+
+  function shell(){
+    root.innerHTML = `
+    <div class="dash">
+      <aside class="d-side">
+        <div class="d-brand"><i>${esc(cfg.brand[0])}</i><div>${esc(cfg.brand)}<small>Admin · demo data</small></div></div>
+        <button class="d-nav" data-view="overview">Overview</button>
+        <button class="d-nav" data-view="crm">CRM sheet <b>${total()}</b></button>
+        <button class="d-nav" data-view="reminders">Reminders <b>${count("noreply")}</b></button>
+        <a class="d-back" href="#top">← Back to website</a>
+      </aside>
+      <main class="d-main" id="dmain"></main>
+    </div>`;
+    root.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click", () => go(b.dataset.view)));
+  }
+  function go(v, f){ view = v; if (f) filter = f; render(); root.querySelector("#dmain").scrollTop = 0; window.scrollTo(0,0); }
+  function render(){
+    root.querySelectorAll("[data-view]").forEach(b => b.setAttribute("aria-current", b.dataset.view === view ? "page" : "false"));
+    const m = root.querySelector("#dmain");
+    if (view === "overview") m.innerHTML = overview();
+    if (view === "crm") m.innerHTML = crm();
+    if (view === "reminders") m.innerHTML = reminders();
+    wire(m);
+  }
+  const money = v => cfg.money(v);
+  const pct = (a,b) => b ? Math.round(a / b * 100) : 0;
+
+  function kpi(label, value, note, st, color){
+    return `<button class="d-kpi" data-open="${st}"><span class="bar" style="background:${color}"></span><small>${label}</small><b>${value}</b><span>${note}</span><span class="go">Open list →</span></button>`;
+  }
+  function overview(){
+    const T = total(), B = count("booked"), F = count("forwarded"), NR = count("noreply"), A = count("active");
+    const revenue = leads.filter(l => l.status === "booked").reduce((s,l) => s + l.value, 0);
+    return `
+      <div class="d-top"><div><h1>Today's AI front desk</h1><p>${day(now)} · ${cfg.agent} has answered every message in under 5 seconds.</p></div><span class="d-live"><i></i>Live · updates every minute</span></div>
+      <div class="d-kpis">
+        ${kpi("Conversations handled", T, `by AI agent ${esc(cfg.agent)} today`, "all", "var(--d-accent)")}
+        ${kpi(esc(cfg.words.bookedKpi), B, `<em>${pct(B,T)}%</em> of conversations · ${money(revenue)}`, "booked", "var(--d-good)")}
+        ${kpi("Forwarded to support", F, "needed a human (pricing, medical, complaints)", "forwarded", "var(--d-warn)")}
+        ${kpi("No reply yet", NR, "first reminder goes 24 h after last message", "noreply", "var(--d-bad)")}
+        ${kpi("Still in conversation", A, "AI is replying right now", "active", "var(--d-info)")}
+      </div>
+      <div class="d-grid">
+        <div class="d-card"><h2>Messages by hour</h2><p class="sub">Peak demand is after work hours, when no receptionist is on duty.</p>${hourly()}</div>
+        <div class="d-card"><h2>From message to ${esc(cfg.words.bookedShort)}</h2><p class="sub">Where today's conversations ended up.</p>${funnel(T, B)}</div>
+      </div>
+      <div class="d-grid">
+        <div class="d-card"><h2>Latest activity</h2><p class="sub">Click any line to read the conversation.</p><div class="d-feed">${leads.slice(0, 14).map(ev).join("")}</div></div>
+        <div class="d-card"><h2>Where clients come from</h2><p class="sub">Channel share of today's conversations.</p>${channels(T)}<div style="margin-top:16px"><button class="d-link" data-open="all">Open full CRM sheet →</button></div></div>
+      </div>`;
+  }
+  function hourly(){
+    const h = Array(24).fill(0); leads.forEach(l => h[l.at.getHours()]++);
+    const mx = Math.max(...h, 1), W = 720, H = 210, bw = W / 24;
+    const peak = h.indexOf(mx);
+    let bars = "";
+    h.forEach((v,i) => { const bh = v / mx * 150; bars += `<rect x="${i*bw+3}" y="${170-bh}" width="${bw-6}" height="${bh}" rx="3" fill="var(--d-accent)" fill-opacity="${i===peak?1:.35}"><title>${i}:00 · ${v} messages</title></rect>`; if (i % 3 === 0) bars += `<text x="${i*bw+bw/2}" y="190" font-size="11" text-anchor="middle" fill="var(--d-muted)">${i===0?"12a":i<12?i+"a":i===12?"12p":(i-12)+"p"}</text>`; });
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Messages by hour of day"><line x1="0" x2="${W}" y1="170" y2="170" stroke="var(--d-line)"/>${bars}<text x="${peak*bw+bw/2}" y="${170 - 150 - 8}" font-size="12" font-weight="700" text-anchor="middle" fill="var(--d-ink)">${mx} at ${peak}:00</text></svg>`;
+  }
+  function funnel(T, B){
+    const steps = [["Conversations",T],["Replied to AI",T - count("noreply")],["Interested",T - count("noreply") - count("closed")],[cfg.words.bookedShort[0].toUpperCase()+cfg.words.bookedShort.slice(1),B]];
+    return `<div class="d-funnel">${steps.map(([l,v]) => `<div class="d-frow"><span>${l}</span><div class="t"><div class="f" style="width:${pct(v,T)}%"></div></div><b>${v}</b></div>`).join("")}</div><p class="sub" style="margin:12px 0 0">${pct(B,T)}% of all conversations became ${esc(cfg.words.bookedShort)}s with no staff involved.</p>`;
+  }
+  function channels(T){
+    const c = {}; leads.forEach(l => c[l.channel] = (c[l.channel]||0) + 1);
+    return `<div class="d-funnel">${Object.entries(c).sort((a,b)=>b[1]-a[1]).map(([k,v]) => `<div class="d-frow"><span>${k}</span><div class="t"><div class="f" style="width:${pct(v,T)}%;opacity:.55"></div></div><b>${pct(v,T)}%</b></div>`).join("")}</div>`;
+  }
+  const ICON = {booked:["✓","var(--d-good-wash)","var(--d-good-ink)"],forwarded:["→","var(--d-warn-wash)","var(--d-warn-ink)"],noreply:["…","var(--d-bad-wash)","var(--d-bad-ink)"],active:["●","var(--d-info-wash)","var(--d-info-ink)"],closed:["×","var(--d-bg)","var(--d-muted)"]};
+  function ev(l){
+    const [i,bg,fg] = ICON[l.status];
+    const what = {booked:`${cfg.words.bookedVerb} ${esc(l.interest)}`, forwarded:`forwarded to support · ${esc(l.why||"")}`, noreply:"stopped replying · reminder scheduled", active:`asking about ${esc(l.interest)}`, closed:"not interested"}[l.status];
+    return `<div class="d-ev" data-lead="${l.id}" style="cursor:pointer"><span class="ic" style="background:${bg};color:${fg}">${i}</span><p><b>${esc(l.name)}</b> <span>${what}</span></p><time>${hm(l.at)}</time></div>`;
+  }
+  function rows(){
+    let r = leads.filter(l => (filter === "all" || l.status === filter) && (!query || (l.name+" "+l.interest+" "+l.place.city+" "+l.channel).toLowerCase().includes(query)));
+    const val = l => sortKey === "place" ? l.place.city : l[sortKey];
+    r = r.slice().sort((a,b) => { const x = val(a), y = val(b); return (x > y ? 1 : x < y ? -1 : 0) * sortDir; });
+    return r;
+  }
+  function crm(){
+    const chips = [["all","All",total()],["booked",cfg.words.bookedKpi,count("booked")],["forwarded","Forwarded",count("forwarded")],["noreply","No reply",count("noreply")],["active","In conversation",count("active")],["closed","Not interested",count("closed")]];
+    const r = rows();
+    const cols = [["name","Client"],["place","Location"],["channel","Channel"],["interest",cfg.words.interestCol],["status","Status"],["last","Last message"],["next","Next action"],["value","Value"],["at","First contact"]];
+    return `
+      <div class="d-top"><div><h1>CRM sheet</h1><p>Every conversation the AI agent handled today. Click a row to read the chat.</p></div><span class="d-live"><i></i>Synced with WhatsApp &amp; Instagram</span></div>
+      <div class="crm-bar">${chips.map(([k,l,c]) => `<button class="crm-chip" data-filter="${k}" aria-pressed="${filter===k}">${l}<b>${c}</b></button>`).join("")}<input class="crm-search" id="crmq" placeholder="Search name, city, ${esc(cfg.words.interestCol.toLowerCase())}…" value="${esc(query)}" aria-label="Search CRM"></div>
+      <div class="sheet"><table>
+        <thead><tr class="letters"><th class="rn"></th>${cols.map((c,i) => `<th>${String.fromCharCode(65+i)}</th>`).join("")}</tr>
+        <tr class="names"><th class="rn">#</th>${cols.map(([k,l]) => `<th data-sort="${k}">${l}${sortKey===k?(sortDir>0?" ↑":" ↓"):""}</th>`).join("")}</tr></thead>
+        <tbody>${r.map((l,i) => `<tr data-lead="${l.id}"><td class="rn">${i+1}</td><td><b>${esc(l.name)}</b><br><span style="color:var(--d-muted)">${esc(l.phone)}</span></td><td>${esc(l.place.city)}</td><td>${l.channel}</td><td>${esc(l.interest)}</td><td><span class="pill st-${l.status}">${LABEL[l.status]}</span></td><td><span class="msg">“${esc(l.last)}”</span></td><td>${esc(l.next)}</td><td class="num">${l.status==="closed"?"—":money(l.value)}</td><td class="num">${hm(l.at)}</td></tr>`).join("") || `<tr><td class="rn"></td><td colspan="9" style="padding:30px;color:var(--d-muted)">No clients match this search.</td></tr>`}</tbody>
+      </table></div>
+      <p class="sub" style="margin:0">${r.length} of ${total()} rows · sample data generated for this demo</p>`;
+  }
+  function reminders(){
+    const nr = leads.filter(l => l.status === "noreply").sort((a,b) => a.reminderAt - b.reminderAt);
+    return `
+      <div class="d-top"><div><h1>Follow-up reminders</h1><p>Clients who stopped replying get a polite reminder automatically. Nobody is forgotten.</p></div></div>
+      <div class="d-grid">
+        <div class="d-card">
+          <div class="d-toggle"><span>Automatic reminders</span><button class="d-switch" role="switch" aria-checked="true" aria-label="Automatic reminders"></button></div>
+          <div class="d-rem">${nr.map(l => `<div class="d-remrow" data-lead="${l.id}" style="cursor:pointer"><div><b>${esc(l.name)}</b><small>${l.channel} · ${esc(l.interest)} · last message ${hm(l.at)}</small></div><span class="pill st-noreply">${esc(l.next.replace("Reminder 1 · ",""))}</span></div>`).join("")}</div>
+        </div>
+        <div class="d-card"><h2>Reminder schedule</h2><p class="sub">Same rules for every client, in their own language.</p>
+          <div class="d-rem">
+            <div class="d-remrow"><div><b>Reminder 1 · after 24 hours</b><small>“${esc(cfg.lines.reminder1)}”</small></div></div>
+            <div class="d-remrow"><div><b>Reminder 2 · after 72 hours</b><small>“${esc(cfg.lines.reminder2)}”</small></div></div>
+            <div class="d-remrow"><div><b>Then</b><small>Moved to “Not interested” and handed to the sales team for a call.</small></div></div>
+          </div>
+          <div style="margin-top:14px"><button class="d-link" data-open="noreply">Open these clients in the CRM sheet →</button></div>
+        </div>
+      </div>`;
+  }
+  function wire(m){
+    m.querySelectorAll("[data-open]").forEach(b => b.addEventListener("click", () => { query = ""; go("crm", b.dataset.open); }));
+    m.querySelectorAll("[data-filter]").forEach(b => b.addEventListener("click", () => { filter = b.dataset.filter; render(); }));
+    m.querySelectorAll("[data-sort]").forEach(b => b.addEventListener("click", () => { const k = b.dataset.sort; sortDir = sortKey === k ? -sortDir : 1; sortKey = k; render(); }));
+    m.querySelectorAll("[data-lead]").forEach(b => b.addEventListener("click", () => drawer(+b.dataset.lead)));
+    const q = m.querySelector("#crmq");
+    if (q) q.addEventListener("input", () => { query = q.value.trim().toLowerCase(); const pos = q.selectionStart; render(); const q2 = m.querySelector("#crmq"); q2.focus(); q2.setSelectionRange(pos,pos); });
+    const sw = m.querySelector(".d-switch");
+    if (sw) sw.addEventListener("click", () => sw.setAttribute("aria-checked", sw.getAttribute("aria-checked") !== "true"));
+  }
+  function drawer(id){
+    const l = leads.find(x => x.id === id); if (!l) return;
+    const t = new Date(l.at), step = () => { t.setMinutes(t.getMinutes() + 1); return hm(t); };
+    const thread = cfg.thread(l).map(([who, text]) => `<div class="d-msg ${who}">${esc(text)}<small>${who === "ai" ? cfg.agent + " (AI)" : esc(l.name.split(" ")[0])} · ${step()}</small></div>`).join("");
+    const el = document.createElement("div");
+    el.className = "d-drawer"; el.setAttribute("role","dialog"); el.setAttribute("aria-modal","true"); el.setAttribute("aria-label", l.name);
+    el.innerHTML = `<div><button class="d-x" aria-label="Close">×</button><div><span class="pill st-${l.status}">${LABEL[l.status]}</span></div><h3>${esc(l.name)}</h3>
+      <div class="d-meta"><div><small>Channel</small>${l.channel}</div><div><small>Location</small>${esc(l.place.city)}</div><div><small>${esc(cfg.words.interestCol)}</small>${esc(l.interest)}</div><div><small>Value</small>${l.status==="closed"?"—":money(l.value)}</div><div style="grid-column:1/-1"><small>Next action</small>${esc(l.next)}</div></div>
+      <div class="d-thread">${thread}</div></div>`;
+    document.body.appendChild(el);
+    const close = () => el.remove();
+    el.addEventListener("click", e => { if (e.target === el || e.target.closest(".d-x")) close(); });
+    document.addEventListener("keydown", function k(e){ if (e.key === "Escape"){ close(); document.removeEventListener("keydown", k); } });
+    el.querySelector(".d-x").focus();
+  }
+
+  // ---------- routing between website and dashboard ----------
+  function route(){
+    const h = location.hash.replace("#","");
+    const inDash = h === "dashboard" || h === "crm" || h === "reminders";
+    site.hidden = inDash; root.hidden = !inDash;
+    if (inDash){ if (!root.firstChild) shell(); go(h === "dashboard" ? "overview" : h, h === "crm" && filter === "all" ? "all" : undefined); }
+    const fab = document.querySelector(".cc-fab"); if (fab) fab.hidden = inDash;
+  }
+  window.addEventListener("hashchange", route);
+
+  // ---------- chat concierge ----------
+  const C = cfg.chat;
+  const fab = document.createElement("button");
+  fab.className = "cc-fab"; fab.innerHTML = `<i>AI</i>${esc(C.button)}`; fab.setAttribute("aria-label", C.button);
+  document.body.appendChild(fab);
+  let box = null, stage = null, draft = {};
+  function say(who, text){ const log = box.querySelector(".cc-log"); const d = document.createElement("div"); d.className = "d-msg " + who; d.textContent = text; log.appendChild(d); log.scrollTop = log.scrollHeight; }
+  function bot(text, quick, delay = 650){
+    const log = box.querySelector(".cc-log"); const t = document.createElement("div"); t.className = "cc-typing"; t.innerHTML = "<i></i><i></i><i></i>"; log.appendChild(t); log.scrollTop = log.scrollHeight;
+    box.querySelector(".cc-quick").innerHTML = "";
+    setTimeout(() => { t.remove(); say("ai", text); setQuick(quick || []); }, delay);
+  }
+  function setQuick(q){ const el = box.querySelector(".cc-quick"); el.innerHTML = q.map(x => `<button type="button">${esc(x)}</button>`).join(""); el.querySelectorAll("button").forEach(b => b.addEventListener("click", () => handle(b.textContent))); }
+  function handle(text){
+    say("cu", text);
+    const low = text.toLowerCase();
+    if (stage === "name"){ draft.name = text; stage = "phone"; return bot(`Thanks, ${text.split(" ")[0]}. What's the best WhatsApp number to confirm on?`); }
+    if (stage === "phone"){ draft.phone = text; stage = "pick"; return bot(C.askPick, C.options); }
+    if (stage === "pick"){ draft.interest = text; stage = "time"; return bot(C.askTime, C.times); }
+    if (stage === "time"){
+      draft.time = text; stage = null;
+      const lead = {id: ++n, name: draft.name, place: PLACES[0], phone: draft.phone, channel: "Website chat", interest: draft.interest, status: "booked", at: new Date(), value: cfg.value[0], owner: "AI agent " + cfg.agent, next: cfg.words.bookedNext + " " + draft.time, last: "Perfect, see you then!"};
+      leads.unshift(lead);
+      bot(C.confirm(draft), ["Open admin dashboard"]);
+      toast(`New ${cfg.words.bookedShort} added to the CRM sheet`);
+      return;
+    }
+    if (low.includes("dashboard")){ location.hash = "dashboard"; box.hidden = true; return; }
+    const hit = C.intents.find(i => i.match.some(w => low.includes(w)));
+    const txt = hit && (typeof hit.reply === "function" ? hit.reply() : hit.reply);
+    if (hit && hit.book){ stage = "name"; return bot(txt); }
+    if (hit) return bot(txt, C.quick);
+    bot(C.fallback, C.quick);
+  }
+  function toast(t){ const el = document.createElement("div"); el.className = "cc-toast"; el.setAttribute("role","status"); el.textContent = t; document.body.appendChild(el); setTimeout(() => el.remove(), 3200); }
+  function open(){
+    if (!box){
+      box = document.createElement("div"); box.className = "cc"; box.setAttribute("role","dialog"); box.setAttribute("aria-label", C.title);
+      box.innerHTML = `<header><i>${esc(cfg.agent[0])}</i><div><b>${esc(cfg.agent)} · ${esc(C.title)}</b><small>AI assistant · replies instantly, 24/7</small></div><button aria-label="Close chat">×</button></header><div class="cc-log" aria-live="polite"></div><div><div class="cc-quick"></div><form><input aria-label="Type a message" placeholder="Type a message…"><button>Send</button></form></div>`;
+      document.body.appendChild(box);
+      box.querySelector("header button").addEventListener("click", () => { box.hidden = true; });
+      box.querySelector("form").addEventListener("submit", e => { e.preventDefault(); const i = box.querySelector("input"); if (i.value.trim()){ handle(i.value.trim()); i.value = ""; } });
+      bot(C.greeting, C.quick, 400);
+    }
+    box.hidden = false; box.querySelector("input").focus();
+  }
+  fab.addEventListener("click", () => box && !box.hidden ? (box.hidden = true) : open());
+  document.querySelectorAll("[data-chat]").forEach(b => b.addEventListener("click", e => { e.preventDefault(); open(); }));
+  route();
+  return {open};
+}
+
+const RATES = {PKR:1, USD:280, AED:76, GBP:355};
+let currency = "PKR";
+try { const c = localStorage.getItem("aurelle-cur"); if (c && RATES[c]) currency = c; } catch(e) {}
+function money(pkr){
+  if (currency === "PKR") return "Rs " + Math.round(pkr).toLocaleString("en-US");
+  const v = Math.max(5, Math.round(pkr / RATES[currency] / 5) * 5);
+  return ({USD:"$",GBP:"£",AED:"AED "})[currency] + v.toLocaleString("en-US");
+}
+
+const T = [
+  {cat:"Facials", name:"HydraFacial Signature", desc:"Deep cleanse, gentle extraction and a serum infusion for instant glow.", time:"45 min", down:"No downtime", sessions:"Monthly", price:14000, art:["--blob4","--blob2"]},
+  {cat:"Facials", name:"Carbon Laser Peel", desc:"Laser over a carbon layer for oil control and smaller-looking pores.", time:"40 min", down:"No downtime", sessions:"4–6", price:11000},
+  {cat:"Facials", name:"Medical Chemical Peel", desc:"Peels chosen for melasma, acne marks and uneven tone.", time:"30 min", down:"2–3 days", sessions:"4", price:9000, art:["--blob3","--blob1"]},
+  {cat:"Laser", name:"Laser Hair Removal", desc:"Diode laser that is safe for deeper skin tones. Full face.", time:"20 min", down:"None", sessions:"6–8", price:7500, art:["--blob2","--blob4"]},
+  {cat:"Laser", name:"Fractional CO2 Resurfacing", desc:"Resurfacing for acne scars and fine lines, with numbing.", time:"60 min", down:"5–7 days", sessions:"3", price:32000},
+  {cat:"Injectables", name:"Anti-wrinkle Injections", desc:"Softens forehead, frown and crow's-feet lines. Movement stays natural.", time:"20 min", down:"None", sessions:"Every 4–6 months", price:22000, unit:"per area", art:["--blob1","--blob2"]},
+  {cat:"Injectables", name:"Lip & Cheek Filler", desc:"Hyaluronic filler for subtle volume and balance.", time:"30 min", down:"1–2 days", sessions:"Lasts 9–12 months", price:52000, unit:"per 1 ml", art:["--blob1","--blob3"]},
+  {cat:"Injectables", name:"Skin Boosters", desc:"Micro-injections of hyaluronic acid for deep hydration.", time:"30 min", down:"1 day", sessions:"3", price:36000},
+  {cat:"Hair", name:"PRP Hair Restoration", desc:"Your own platelet-rich plasma to slow hair loss and thicken hair.", time:"60 min", down:"None", sessions:"4–6", price:18000, art:["--blob3","--blob4"]},
+];
+const BENTO = ["HydraFacial Signature","Anti-wrinkle Injections","Laser Hair Removal","Medical Chemical Peel","Lip & Cheek Filler","PRP Hair Restoration"];
+const $ = id => document.getElementById(id);
+const tok = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+$("mq").innerHTML = [...T, ...T].map(t => `<span>${t.name}</span>`).join("");
+
+function drawBento(){
+  $("bento").innerHTML = BENTO.map((n,i) => { const t = T.find(x => x.name === n); return `
+    <article class="tile t${i+1}"><div class="art" style="background:radial-gradient(120% 90% at 85% 10%, var(${t.art[0]}) 0, transparent 60%),radial-gradient(90% 80% at 10% 100%, var(${t.art[1]}) 0, transparent 60%)"></div>
+      <div><div class="chips"><span>${t.cat}</span><span>${t.time}</span><span>${t.down}</span></div><h3 style="margin-top:14px">${t.name}</h3><p>${t.desc}</p></div>
+      <div class="row"><div class="from">from<b class="num">${money(t.price)}</b></div><a class="btn btn-ink" style="padding:10px 18px;font-size:14px" href="#book" data-pick="${t.name}">Book</a></div>
+    </article>`; }).join("");
+}
+let curCat = "All";
+const cats = ["All", ...new Set(T.map(t => t.cat))];
+function drawMenu(){
+  $("tabs").innerHTML = cats.map(c => `<button class="tab" role="tab" aria-selected="${c===curCat}" data-c="${c}">${c}</button>`).join("");
+  $("menu").innerHTML = T.filter(t => curCat==="All" || t.cat===curCat).map(t => `
+    <div class="mrow"><div><h3>${t.name}</h3><p>${t.desc}</p><div class="meta"><span>${t.cat}</span><span>${t.time}</span><span>${t.down}</span><span>Sessions: ${t.sessions}</span></div></div>
+    <div class="price"><b class="num">${money(t.price)}</b><small>${t.unit || "per session"}</small></div><a class="btn btn-glass" href="#book" data-pick="${t.name}">Book</a></div>`).join("");
+}
+$("tabs").addEventListener("click", e => { const b = e.target.closest("[data-c]"); if (b){ curCat = b.dataset.c; drawMenu(); } });
+document.addEventListener("click", e => { const a = e.target.closest("[data-pick]"); if (a){ bk.treat = a.dataset.pick; bk.step = 1; drawBk(); } });
+
+/* booking */
+const bk = {step:0, treat:null, date:null, time:null, name:"", phone:"", city:"Lahore"};
+const DAYS = []; { const d = new Date(); for (let i = 0; i < 14; i++){ const x = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i); DAYS.push(x); } }
+const SLOTS = ["11:00 am","12:30 pm","2:00 pm","4:30 pm","6:00 pm","7:30 pm"];
+const taken = (d, s) => (d.getDate() * 7 + s.length * 3) % 5 === 0;
+function drawBk(){
+  [...$("ind").children].forEach((s,i) => s.className = i <= bk.step ? "on" : "");
+  const el = $("bk");
+  if (bk.step === 0){
+    el.innerHTML = `<h3>What would you like to treat?</h3><div class="opts">${["Skin analysis only", ...T.map(t=>t.name)].slice(0,8).map(n => { const t = T.find(x=>x.name===n); return `<button class="opt" aria-pressed="${bk.treat===n}" data-t="${n}"><b>${n}</b><small>${t ? "from " + money(t.price) : "Consultation · " + money(3500)}</small></button>`; }).join("")}</div><div class="nav-bk"><span></span><button class="btn btn-ink" id="next" ${bk.treat?"":"disabled"}>Choose a date</button></div>`;
+    el.querySelectorAll("[data-t]").forEach(b => b.addEventListener("click", () => { bk.treat = b.dataset.t; drawBk(); }));
+  }
+  if (bk.step === 1){
+    if (!bk.date) bk.date = DAYS[1];
+    el.innerHTML = `<h3>Pick a day and time</h3><p style="margin:-8px 0 14px;color:var(--muted)">${bk.treat}</p>
+      <div class="f2" style="margin-bottom:14px"><label for="bkcity">Clinic<select id="bkcity"><option ${bk.city==="Lahore"?"selected":""}>Lahore</option><option ${bk.city==="Dubai"?"selected":""}>Dubai</option></select></label><span></span></div>
+      <div class="cal">${DAYS.map((d,i) => `<button data-d="${i}" aria-pressed="${bk.date && d.toDateString()===bk.date.toDateString()}" ${d.getDay()===5 && bk.city==="Lahore" ? "disabled" : ""}><small>${d.toLocaleDateString("en-US",{weekday:"short"})}</small>${d.getDate()}</button>`).join("")}</div>
+      <div class="slots">${SLOTS.map(s => `<button data-s="${s}" aria-pressed="${bk.time===s}" ${taken(bk.date,s)?"disabled":""}>${s}</button>`).join("")}</div>
+      <div class="nav-bk"><button class="btn btn-glass" id="back">Back</button><button class="btn btn-ink" id="next" ${bk.time?"":"disabled"}>Your details</button></div>`;
+    el.querySelectorAll("[data-d]").forEach(b => b.addEventListener("click", () => { bk.date = DAYS[+b.dataset.d]; bk.time = null; drawBk(); }));
+    el.querySelectorAll("[data-s]").forEach(b => b.addEventListener("click", () => { bk.time = b.dataset.s; drawBk(); }));
+    $("bkcity").addEventListener("change", e => { bk.city = e.target.value; drawBk(); });
+  }
+  if (bk.step === 2){
+    el.innerHTML = `<h3>Your details</h3><div style="display:grid;gap:12px"><div class="f2"><label for="bkn">Full name<input id="bkn" autocomplete="name" value="${bk.name}" placeholder="e.g. Sarah Khan"></label><label for="bkp">WhatsApp number<input id="bkp" inputmode="tel" value="${bk.phone}" placeholder="+92 3XX XXXXXXX"></label></div><label for="bkx">Anything we should know? (optional)<textarea id="bkx" rows="3" placeholder="Allergies, previous treatments, skin concerns"></textarea></label></div><div id="bkerr" class="err" hidden></div>
+      <div class="nav-bk"><button class="btn btn-glass" id="back">Back</button><button class="btn btn-ink" id="next">Confirm booking</button></div>`;
+  }
+  if (bk.step === 3){
+    const t = T.find(x => x.name === bk.treat);
+    el.innerHTML = `<div class="done"><div class="tick">✓</div><h3 style="margin:0">You're booked, ${bk.name.split(" ")[0]}.</h3><p style="margin:0;color:var(--muted)">A confirmation is on its way to ${bk.phone} on WhatsApp. (Demo: nothing was sent.)</p>
+      <div class="summary"><div><span>Treatment</span><b>${bk.treat}</b></div><div><span>When</span><b>${bk.date.toLocaleDateString("en-US",{weekday:"long",day:"numeric",month:"long"})}, ${bk.time}</b></div><div><span>Clinic</span><b>${bk.city}</b></div><div><span>Estimate</span><b class="num">${money(t ? t.price : 3500)}</b></div></div>
+      <div class="cta" style="justify-content:center"><a class="btn btn-ink" href="#dashboard">See it in the admin dashboard</a><button class="btn btn-glass" id="again">Book another</button></div></div>`;
+    $("again").addEventListener("click", () => { Object.assign(bk, {step:0, treat:null, date:null, time:null}); drawBk(); });
+  }
+  const nx = $("next"), bkb = $("back");
+  if (bkb) bkb.addEventListener("click", () => { bk.step--; drawBk(); });
+  if (nx) nx.addEventListener("click", () => {
+    if (bk.step === 2){
+      bk.name = $("bkn").value.trim(); bk.phone = $("bkp").value.trim();
+      if (!bk.name || bk.phone.replace(/\D/g,"").length < 9){ const e = $("bkerr"); e.hidden = false; e.textContent = "Please add your name and a WhatsApp number with country code."; return; }
+    }
+    bk.step++; drawBk();
+  });
+}
+
+function refreshPrices(){ drawBento(); drawMenu(); drawBk(); drawMini(); }
+$("cur").value = currency;
+$("cur").addEventListener("change", e => { currency = e.target.value; try { localStorage.setItem("aurelle-cur", currency); } catch(err) {} refreshPrices(); });
+
+/* serum canvas: slow drifting colour fields */
+(function(){
+  const c = $("serum"), ctx = c.getContext("2d"), still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const blobs = [["--blob1",.78,.25,.42],["--blob2",.62,.75,.38],["--blob3",.95,.7,.3],["--blob4",.35,.1,.3]];
+  let w, h, t0 = performance.now();
+  function size(){ const r = c.getBoundingClientRect(); w = c.width = r.width * devicePixelRatio; h = c.height = r.height * devicePixelRatio; }
+  function frame(now){
+    const t = (now - t0) / 1000;
+    ctx.clearRect(0,0,w,h);
+    blobs.forEach(([v,x,y,r],i) => {
+      const cx = (x + Math.sin(t*.15 + i*1.7)*.06) * w, cy = (y + Math.cos(t*.12 + i)*.08) * h, rad = r * Math.max(w,h);
+      const g = ctx.createRadialGradient(cx,cy,0,cx,cy,rad); const col = tok(v) || "#ccc";
+      g.addColorStop(0, col); g.addColorStop(1, "transparent"); ctx.fillStyle = g; ctx.globalAlpha = .75; ctx.fillRect(0,0,w,h);
+    });
+    ctx.globalAlpha = 1;
+    if (!still) requestAnimationFrame(frame);
+  }
+  size(); addEventListener("resize", () => { size(); if (still) frame(performance.now()); });
+  requestAnimationFrame(frame);
+})();
+
+const desk = FrontDesk({
+  mount:"dash", site:"site", brand:"Aurelle Aesthetics", agent:"Aria", seed:11,
+  money: v => money(v),
+  places:[{city:"Lahore",code:"+92 3"},{city:"Dubai",code:"+971 5"},{city:"Islamabad",code:"+92 3"},{city:"Karachi",code:"+92 3"},{city:"Abu Dhabi",code:"+971 5"},{city:"London",code:"+44 7"}],
+  interests: T.map(t => t.name).concat(["Skin analysis"]),
+  value:[9000, 60000],
+  counts:{booked:37, forwarded:19, noreply:42, active:31, closed:19},
+  team:["Sara (front desk)","Dr. Hamza's assistant","Mehak (patient care)"],
+  words:{booked:"Booked", bookedKpi:"Appointments booked", bookedShort:"appointment", bookedVerb:"booked", bookedNext:"Appointment", interestCol:"Treatment"},
+  lines:{
+    booked:["Thursday 4:30 works, see you then","Perfect, booked. Thank you!","Great, I'll bring my sister too","Yes please confirm the evening slot"],
+    forwarded:["Is this safe while breastfeeding?","Can I get a package price for 6 sessions?","I need to move my appointment","I had redness after my last visit"],
+    forwardWhy:["Medical question","Package discount request","Reschedule request","Follow-up after treatment"],
+    noreply:["How much is laser for full face?","Is the doctor female?","Do you have Saturday slots?","What is the price in dirhams?"],
+    active:["Which is better for melasma, peel or laser?","How long does filler last?","Can I come in my lunch break?"],
+    closed:["Too expensive for me right now","Just checking prices","I found a clinic closer to home"],
+    reminder1:"Hi {name}, this is Aria from Aurelle. Shall I hold a consultation slot for you this week?",
+    reminder2:"Hi {name}, just a gentle reminder: we still have openings with Dr. Mahnoor. Reply YES and I'll book you in."
+  },
+  thread: l => {
+    const f = l.name.split(" ")[0], base = [["cu", l.last && l.status==="noreply" ? l.last : `Hi, I wanted to ask about ${l.interest}`], ["ai", `Hi ${f}! I'm Aria, Aurelle's AI concierge. ${l.interest} starts from ${money(l.value)} per session at our ${l.place.city === "Dubai" || l.place.city === "Abu Dhabi" ? "Dubai" : "Lahore"} clinic. Would you like me to book a consultation?`]];
+    if (l.status === "booked") return base.concat([["cu","Yes, what times do you have?"],["ai","I have Thursday 4:30 pm or Saturday 1:00 pm with Dr. Mahnoor."],["cu", l.last],["ai","Booked! You'll get a WhatsApp confirmation now and a reminder the day before."]]);
+    if (l.status === "forwarded") return base.concat([["cu", l.last],["ai","That's a good question for our medical team. I've passed it to them and someone will reply within 30 minutes."]]);
+    if (l.status === "noreply") return base.concat([["ai","Reminder scheduled for 24 hours after this message if there's no reply."]]);
+    if (l.status === "active") return base.concat([["cu", l.last],["ai","Great question. Here's how they compare…"]]);
+    return base.concat([["cu", l.last],["ai","No problem at all. I'll be here if you change your mind."]]);
+  },
+  chat:{
+    button:"Chat with Aria", title:"Aurelle concierge",
+    greeting:"Hi! I'm Aria, Aurelle's AI concierge. I can share prices, check doctor availability and book your consultation, any time of day. What can I help with?",
+    quick:["Book a consultation","Prices","Is it safe for my skin?","Locations & timings"],
+    intents:[
+      {match:["book","appointment","consult","slot"], book:true, reply:"Lovely. May I have your full name?"},
+      {match:["price","cost","how much","rate","fee"], reply:() => { const [a,b,c] = priceLine(); return `HydraFacial starts at ${a}, laser hair removal (full face) at ${b}, and anti-wrinkle injections at ${c} per area. Packages of 3 or 6 sessions save up to 25%.`; }},
+      {match:["safe","skin","dark","sensitive","side effect"], reply:"Yes. Our lasers and peels are chosen for deeper South Asian and Middle Eastern skin tones, and every plan starts with a dermatologist's skin analysis and patch test."},
+      {match:["location","where","timing","hours","address","open"], reply:"Lahore: 14-B MM Alam Road, Gulberg III, Mon–Sat 11 am–9 pm. Dubai: Villa 21, Al Wasl Road, Jumeirah, Sat–Thu 10 am–10 pm."}
+    ],
+    askPick:"Which treatment are you interested in?",
+    options:["HydraFacial Signature","Laser Hair Removal","Anti-wrinkle Injections","Medical Chemical Peel","Skin analysis only"],
+    askTime:"Here are the next open slots with Dr. Mahnoor:",
+    times:["Today 4:30 pm","Tomorrow 11:00 am","Tomorrow 6:00 pm","Saturday 1:00 pm"],
+    confirm: d => `Done! ${d.interest} is booked for ${d.time}. A WhatsApp confirmation goes to ${d.phone}. I've also added it to the clinic's CRM. Want to see the admin dashboard?`,
+    fallback:"I can help with prices, booking, safety and locations. For anything medical I'll connect you to our doctors."
+  }
+});
+function priceLine(){ const f = n => money(T.find(t => t.name === n).price); return [f("HydraFacial Signature"), f("Laser Hair Removal"), f("Anti-wrinkle Injections")]; }
+
+function drawMini(){
+  $("mini").innerHTML = [["148","conversations today","dashboard"],["37","appointments booked","crm"],["19","sent to the team","crm"],["42","reminders queued","reminders"]].map(([n,l,h]) => `<a href="#${h}"><b class="num">${n}</b><small>${l}</small></a>`).join("");
+}
+refreshPrices();
+</script>
+
+</body></html>
