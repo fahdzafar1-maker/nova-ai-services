@@ -1,0 +1,138 @@
+// Blog posts (/blog/<slug>). One entry = one article. Newest first.
+// Inline formatting inside text: **bold** and [link text](/path or https://...).
+// Rule: only real facts. Third-party prices must cite a source and a date.
+
+export type Block =
+  | { type: "h2"; text: string }
+  | { type: "h3"; text: string }
+  | { type: "p"; text: string }
+  | { type: "ul"; items: string[] }
+  | { type: "table"; head: string[]; rows: string[][]; caption?: string }
+  | { type: "callout"; text: string };
+
+export type Post = {
+  slug: string;
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
+  excerpt: string;
+  date: string; // YYYY-MM-DD
+  updated?: string;
+  readMins: number;
+  tags: string[];
+  solutionSlug: string; // landing page this post supports
+  demoSlug: string;
+  blocks: Block[];
+  faqs: { q: string; a: string }[];
+  sources: { title: string; url: string }[];
+};
+
+export const POSTS: Post[] = [
+  {
+    slug: "ai-receptionist-cost",
+    title: "How Much Does an AI Receptionist Cost in 2026?",
+    metaTitle: "How Much Does an AI Receptionist Cost in 2026? Real Price Ranges",
+    metaDescription: "AI receptionist pricing in 2026: typical monthly plans, per-minute costs, custom builds and how they compare with a human or live answering service. Real ranges with sources.",
+    excerpt: "Most small businesses pay between $50 and $200 a month for an AI answering service. Here is what drives the price, what custom builds cost to run, and how it compares with a human receptionist.",
+    date: "2026-10-21",
+    readMins: 8,
+    tags: ["AI receptionist", "Pricing", "Voice AI"],
+    solutionSlug: "ai-voice-receptionist-real-estate",
+    demoSlug: "skyline-voice-receptionist",
+    blocks: [
+      { type: "callout", text: "**Short answer:** most small businesses pay roughly **$50 to $200 a month** for an AI receptionist or AI answering service. Off-the-shelf plans range from about $29 to $400 a month, or about $0.15 to $0.50 per minute. A custom-built voice agent usually has a one-time build cost plus a running cost of roughly **$0.08 to $0.27 per minute**. A full-time human receptionist in the US costs about **$38,000 a year in pay alone**." },
+      { type: "p", text: "If you run a clinic, an agency or a home-service company, you have probably seen ads for AI receptionists that \"answer every call for less than a coffee a day\". The real number depends on how many calls you get, how long they last and what you want the AI to do after it answers. This guide breaks the cost down in plain language so you can budget properly and compare options fairly." },
+      { type: "p", text: "All third-party prices below come from published 2026 pricing comparisons (sources at the end). Prices change often, so always confirm on the provider's own pricing page before you buy." },
+
+      { type: "h2", text: "What an AI receptionist actually does" },
+      { type: "p", text: "An AI receptionist is software that answers your phone, website chat or WhatsApp like a trained front-desk person. A good one can:" },
+      { type: "ul", items: [
+        "Answer in seconds, 24 hours a day, including weekends and holidays.",
+        "Answer common questions about hours, services, location and prices you choose to publish.",
+        "Qualify the caller, for example by asking about budget, area, timeline or the problem they have.",
+        "Book appointments into a real calendar and send confirmations and reminders.",
+        "Send a summary of every call to your CRM, Google Sheets, email, Slack or WhatsApp.",
+        "Transfer urgent or sensitive calls to a person.",
+      ] },
+      { type: "p", text: "The more of these jobs you need, and the more tools it has to connect to, the more the setup costs. The running cost mostly depends on call minutes." },
+
+      { type: "h2", text: "The four ways AI receptionists are priced" },
+      { type: "h3", text: "1. Minute bundles" },
+      { type: "p", text: "The most common model. You pay a monthly fee that includes a set number of AI minutes. Published 2026 bundles range from about **$29 to $349 a month for 60 to 1,000 minutes**. Entry tiers work out to about $0.48 per minute and the largest tiers to about $0.35 per minute. If you go over, overage is typically **$0.35 to $0.50 per minute**." },
+      { type: "h3", text: "2. Flat monthly plans" },
+      { type: "p", text: "Some providers charge a flat fee, usually between **$79 and $599 a month**, with soft limits on usage. Easy to budget, but check what happens in a busy month." },
+      { type: "h3", text: "3. Per call or per caller" },
+      { type: "p", text: "Some services bill for each call, roughly **$0.67 to $1.50 per call**, or for each unique caller per month. This suits businesses with short, simple calls." },
+      { type: "h3", text: "4. Pay-as-you-go platforms (custom builds)" },
+      { type: "p", text: "Developer platforms such as Vapi or Retell charge only per minute, with no monthly plan. Vapi's own platform fee is **$0.05 per minute**, and you also pay for speech-to-text, the AI model, the voice and the phone line. Industry estimates put the all-in cost at about **$0.08 per minute for an economical setup** and about **$0.25 to $0.27 per minute with premium voices and models**. This is the model agencies and developers use to build a receptionist tailored to one business." },
+
+      { type: "table", caption: "Typical 2026 price ranges (published comparisons, US pricing)", head: ["Option", "Typical cost", "Best for"], rows: [
+        ["AI receptionist, minute bundle", "$29 – $349 / month (60 – 1,000 min)", "Small businesses with predictable call volume"],
+        ["AI receptionist, flat plan", "$79 – $599 / month", "Businesses that want one fixed bill"],
+        ["Custom AI voice agent", "One-time build + ~$0.08 – $0.27 / min", "Businesses that need their own process, CRM and booking rules"],
+        ["Live human answering service", "$250 – $760 / month for small-business plans; overage $1.59 – $2.99 / min", "Businesses that want a person on every call"],
+        ["Hybrid AI + human", "$165 – $2,100 / month, or $7 – $11.50 per call", "High-value calls that need human backup"],
+        ["Full-time human receptionist (US)", "~$38,010 / year median pay, ~$4,500 / month with benefits", "Front desk work beyond the phone"],
+      ] },
+
+      { type: "h2", text: "A simple example: 300 calls a month" },
+      { type: "p", text: "Say a dental clinic or a small real estate agency gets **300 calls a month** that last **3 minutes** on average. That is 900 minutes a month." },
+      { type: "ul", items: [
+        "**Custom voice agent (economical stack):** 900 min × ~$0.08 ≈ **$72 a month** in running costs, plus the one-time build.",
+        "**Custom voice agent (premium voice and model):** 900 min × ~$0.26 ≈ **$234 a month**, plus the build.",
+        "**Off-the-shelf AI bundle:** a 1,000-minute tier is about **$349 a month** in published pricing.",
+        "**Live answering service:** at $1.59 – $2.99 per minute, the same 900 minutes would cost roughly **$1,400 to $2,700 a month**.",
+        "**Full-time receptionist:** about **$4,500 a month** with benefits, and they can still only take one call at a time.",
+      ] },
+      { type: "p", text: "These are estimates, not quotes, but they show the pattern: AI is usually several times cheaper than a person per call, and a custom build becomes more attractive as call volume grows." },
+
+      { type: "h2", text: "What changes the price" },
+      { type: "ul", items: [
+        "**Call volume and length.** Running cost is mostly minutes. Long calls cost more.",
+        "**Voice quality.** Premium, very natural voices cost more per minute than standard ones.",
+        "**Integrations.** Connecting to your calendar, CRM, booking system or field-service tool adds setup work.",
+        "**Channels.** Phone only, or also WhatsApp, website chat and Instagram?",
+        "**Languages.** Multilingual agents need more testing.",
+        "**Rules and handoff.** Emergency triage, transfers to staff and complex qualification take more design time.",
+        "**Phone numbers.** Each phone number has a small monthly fee, often around $1 to $2 in the US.",
+      ] },
+
+      { type: "h2", text: "Hidden costs to ask about" },
+      { type: "p", text: "Before you sign up anywhere, ask these questions in writing:" },
+      { type: "ul", items: [
+        "Is there a setup or onboarding fee?",
+        "What is the overage price per minute or per call?",
+        "Is it really month-to-month? Some plans have 30 to 90 day notice periods.",
+        "Are features like CRM integration, call recordings or analytics extra?",
+        "Who owns the call data and transcripts, and can you export them?",
+        "Who fixes it if a booking fails or an integration breaks?",
+      ] },
+
+      { type: "h2", text: "Off-the-shelf vs custom-built: which is right for you?" },
+      { type: "p", text: "**Off-the-shelf AI receptionists** are fast to start and fine if your calls are simple: hours, location, take a message, book a basic appointment. You fit your business into their product." },
+      { type: "p", text: "**A custom-built AI receptionist** is designed around your process. It asks your qualification questions, follows your emergency rules, books into the calendar you already use and sends leads to your CRM in the format your team wants. You usually pay a one-time build fee and then the raw running cost per minute, which can be lower than a bundle at higher volumes." },
+      { type: "p", text: "At Fahd AI Services we build custom voice and chat receptionists on platforms like Vapi and n8n. You can call a working example in our [Skyline AI Voice Receptionist demo](/demos/skyline-voice-receptionist), which answers, qualifies a property buyer and books a viewing. We give a fixed quote for the build and explain the running costs up front, with no hidden fees." },
+
+      { type: "h2", text: "Is an AI receptionist worth it?" },
+      { type: "p", text: "The honest way to decide is to compare the monthly cost with the value of the calls you currently miss. If one new patient, one property viewing or one emergency repair job is worth more than the monthly cost, and you regularly miss calls after hours or during busy times, an AI receptionist usually pays for itself quickly." },
+      { type: "p", text: "It is not a good fit if almost every call needs expert judgement, or if you get so few calls that a voicemail is enough. In those cases, start with a website chat assistant or a simple missed-call text-back instead." },
+      { type: "p", text: "See how this works for your industry: [real estate agents](/solutions/ai-voice-receptionist-real-estate), [dental clinics](/solutions/ai-receptionist-dental-clinic) and [HVAC & plumbing companies](/solutions/ai-answering-service-hvac)." },
+    ],
+    faqs: [
+      { q: "How much does an AI receptionist cost per month?", a: "Most small businesses pay roughly $50 to $200 a month. Published 2026 plans range from about $29 to $400 a month, or about $0.15 to $0.50 per minute, depending on call volume and features." },
+      { q: "How much does an AI receptionist cost per minute?", a: "Off-the-shelf plans work out to about $0.35 to $0.50 per minute on most tiers. Custom voice agents built on platforms like Vapi cost roughly $0.08 to $0.27 per minute all-in, depending on the voice and AI model used." },
+      { q: "Is an AI receptionist cheaper than a human receptionist?", a: "Usually, yes. The US median pay for receptionists is about $38,010 a year (May 2025), or roughly $4,500 a month with benefits. Live answering services charge about $1.59 to $2.99 per minute over their plan limits. Most AI options cost a fraction of that per call." },
+      { q: "Are there setup fees?", a: "Many off-the-shelf providers advertise no setup fee. Custom-built receptionists usually have a one-time build fee that depends on integrations, channels and rules. Always ask for all fees in writing." },
+      { q: "Can an AI receptionist book appointments?", a: "Yes. A well-built AI receptionist checks real free slots in your calendar or booking system, confirms the appointment and can send reminders." },
+      { q: "What happens if the AI can't answer a question?", a: "A properly designed agent says so, takes the caller's details and alerts your team, or transfers the call to a person based on rules you set. It should never invent prices or availability." },
+    ],
+    sources: [
+      { title: "CloudTalk: How much does an AI answering service cost in 2026 (updated Sept 2026)", url: "https://www.cloudtalk.io/blog/how-much-does-ai-answering-service-cost/" },
+      { title: "Zeeg: Vapi AI pricing, true cost breakdown in 2026", url: "https://zeeg.me/en/blog/post/vapi-ai-pricing" },
+      { title: "AIRA: Virtual receptionist pricing, what every service costs (2026)", url: "https://www.getaira.io/blog/virtual-receptionist-pricing" },
+      { title: "US Bureau of Labor Statistics: Receptionists, Occupational Outlook Handbook", url: "https://www.bls.gov/ooh/office-and-administrative-support/receptionists.htm" },
+    ],
+  },
+];
+
+export const getPost = (slug: string) => POSTS.find((p) => p.slug === slug);
