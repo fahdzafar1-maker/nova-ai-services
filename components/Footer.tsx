@@ -16,6 +16,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5 text-sm">
             {NAV.map((n) => <li key={n.href}><Link className="text-silver hover:text-white" href={n.href}>{n.label}</Link></li>)}
             <li><Link className="text-silver hover:text-white" href="/solutions">Solutions</Link></li>
+            <li><Link className="text-silver hover:text-white" href="/blog">Blog</Link></li>
             <li><Link className="text-silver hover:text-white" href="/privacy">Privacy</Link></li>
           </ul>
         </div>
