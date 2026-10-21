@@ -15,6 +15,7 @@ export function Footer() {
           <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-silver-600">Explore</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
             {NAV.map((n) => <li key={n.href}><Link className="text-silver hover:text-white" href={n.href}>{n.label}</Link></li>)}
+            <li><Link className="text-silver hover:text-white" href="/solutions">Solutions</Link></li>
             <li><Link className="text-silver hover:text-white" href="/privacy">Privacy</Link></li>
           </ul>
         </div>
