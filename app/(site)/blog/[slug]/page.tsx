@@ -117,7 +117,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           ))}
         </div>
 
-        {p.sources.length > 0 && (
+        {p.showSources !== false && p.sources.length > 0 && (
           <section className="mt-12 border-t border-white/[0.06] pt-6">
             <h2 className="text-xs font-semibold uppercase tracking-[0.2em] text-silver-400">Sources</h2>
             <ul className="mt-3 space-y-1.5 text-sm">{p.sources.map((s) => <li key={s.url}><a href={s.url} target="_blank" rel="noopener noreferrer" className="text-silver-400 underline underline-offset-2 hover:text-white">{s.title}</a></li>)}</ul>
@@ -127,8 +127,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
       <section className="wrap mt-16 grid max-w-5xl gap-6 lg:grid-cols-[1.2fr_1fr] lg:items-start">
         <div className="relative overflow-hidden rounded-3xl border border-cyan/20 bg-gradient-to-br from-electric/20 via-night-800 to-night-900 p-8">
-          <h2 className="h-display text-2xl">Want a quote for your business?</h2>
-          <p className="mt-2 text-silver">Tell us your call volume and tools. You get a fixed build quote and clear running costs.</p>
+          <h2 className="h-display text-2xl">Want this working in your business?</h2>
+          <p className="mt-2 text-silver">Tell us how your business works today. You get a clear plan and a fixed quote, with no obligation.</p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a href={wa} target="_blank" rel="noopener noreferrer" className="btn-primary"><Icon name="whatsapp" className="h-4 w-4" /> WhatsApp us</a>
             {solution && <Link href={`/solutions/${solution.slug}`} className="btn-ghost">{solution.h1}</Link>}
