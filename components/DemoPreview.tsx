@@ -8,6 +8,7 @@ function Bubble({ side, children, tone = "ai" }: { side: "l" | "r"; children: Re
 
 export function DemoPreview({ slug }: { slug: string }) {
   switch (slug) {
+    case "hvac-voice-receptionist":
     case "skyline-voice-receptionist":
       return (
         <div className="flex h-full flex-col items-center justify-center gap-3">
