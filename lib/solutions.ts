@@ -199,8 +199,8 @@ export const SOLUTIONS: Solution[] = [
     metaTitle: "AI Answering Service for HVAC Companies: 24/7 Call Booking",
     metaDescription: "AI answering service and voice assistant for HVAC and plumbing companies: answers every call 24/7, books jobs, flags emergencies and texts your on-call tech.",
     intro: "When an AC fails or a pipe bursts, the customer calls until someone answers. An AI answering service picks up every call, captures the job, books the visit and alerts your on-call tech for emergencies.",
-    demoSlug: "skyline-voice-receptionist",
-    demoNote: "This live demo is set up for a real estate agency, but it runs on the same voice technology and call flow we use for home-service companies.",
+    demoSlug: "hvac-voice-receptionist",
+    demoNote: "This is a simulated call with fictional details. It shows the call flow we build for HVAC and plumbing companies: a safety check, job details, a booked visit and a technician alert.",
     serviceSlug: "voice-receptionist",
     problem: {
       title: "Missed calls in home services are missed jobs",
