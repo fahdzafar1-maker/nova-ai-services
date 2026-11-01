@@ -5,6 +5,7 @@ import type { ComponentType } from "react";
 const L = () => <div className="card grid h-[420px] place-items-center text-sm text-silver-400">Loading demo…</div>;
 export const DEMO_COMPONENTS: Record<string, ComponentType> = {
   "skyline-voice-receptionist": dynamic(() => import("./VoiceReceptionist").then((m) => m.VoiceReceptionist), { loading: L }),
+  "hvac-voice-receptionist": dynamic(() => import("./HvacVoiceReceptionist").then((m) => m.HvacVoiceReceptionist), { loading: L }),
   "skyline-whatsapp-bot": dynamic(() => import("./SkylineWhatsApp").then((m) => m.SkylineWhatsApp), { loading: L }),
   "clinic-ai-receptionist": dynamic(() => import("./ClinicReceptionist").then((m) => m.ClinicReceptionist), { loading: L }),
   "client-hunter": dynamic(() => import("./ClientHunter").then((m) => m.ClientHunter), { loading: L }),
