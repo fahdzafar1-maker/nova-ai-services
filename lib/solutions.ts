@@ -20,6 +20,7 @@ export type Solution = {
   extra?: { title: string; paragraphs: string[] };
   faqs: { q: string; a: string }[];
   related: string[];
+  guides?: { title: string; href: string }[];
 };
 
 export const SOLUTIONS: Solution[] = [
@@ -241,6 +242,11 @@ export const SOLUTIONS: Solution[] = [
       { q: "How much does it cost?", a: "There is a one-time setup and a running cost based on call minutes. Tell us your average call volume and we will send a fixed quote." },
     ],
     related: ["ai-voice-receptionist-real-estate", "crm-automation-small-business", "website-with-ai-chatbot"],
+    guides: [
+      { title: "How Much Does an AI Receptionist Cost in 2026?", href: "/blog/ai-receptionist-cost" },
+      { title: "What a Complete AI Phone Receptionist Really Costs Per Month", href: "/blog/ai-phone-receptionist-cost-2026" },
+      { title: "What Missed Calls and Slow Replies Are Really Costing Your Business in 2026", href: "/blog/missed-calls-cost-business" },
+    ],
   },
 
   // 5 ─────────────────────────────────────────────
