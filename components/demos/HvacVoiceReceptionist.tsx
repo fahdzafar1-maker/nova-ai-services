@@ -17,10 +17,10 @@ const CALL: Line[] = [
   { who: "agent", text: "Got it. What is the address for the visit?", fill: [["Equipment", "Central AC · about 8 years old"]] },
   { who: "caller", text: "It's 42 Maple Street, in Riverside." },
   { who: "agent", text: "Thank you. We have a technician available today between 6 and 8 pm, or tomorrow morning between 8 and 10. Which would you prefer?", fill: [["Address", "42 Maple Street, Riverside"]] },
-  { who: "caller", text: "Today would be great. My name is Emma." },
-  { who: "agent", text: "Thank you, Emma. I've booked a technician for today between 6 and 8 pm. You will get a text confirmation, and the technician will call you when they are on the way. Is there anything else I can help with?", fill: [["Caller", "Emma (demo)"], ["Priority", "Urgent · same day"], ["Next step", "Visit booked · today 6 to 8 pm"]], action: "booking" },
+  { who: "caller", text: "Today would be great. My name is Mark." },
+  { who: "agent", text: "Thank you, Mark. I've booked a technician for today between 6 and 8 pm. You will get a text confirmation, and the technician will call you when they are on the way. Is there anything else I can help with?", fill: [["Caller", "Mark (demo)"], ["Priority", "Urgent · same day"], ["Next step", "Visit booked · today 6 to 8 pm"]], action: "booking" },
   { who: "caller", text: "No, that's all. Thank you." },
-  { who: "agent", text: "You're welcome, Emma. Stay cool, and have a good evening!", action: "end" },
+  { who: "agent", text: "You're welcome, Mark. Stay cool, and have a good evening!", action: "end" },
 ];
 
 const ACTIONS = [
@@ -29,6 +29,10 @@ const ACTIONS = [
   { id: "sheet", label: "Job details saved to the job sheet", icon: "crm" },
   { id: "mail", label: "Call summary emailed to the office", icon: "mail" },
 ];
+
+// Browser voices rarely say their gender, so we match known names. "female" must be excluded explicitly: /male/ also matches it.
+const FEMALE = /female|woman|samantha|zira|aria|jenny|libby|sonia|susan|hazel|karen|moira|tessa|fiona|victoria|ava|allison|joanna|kendra|kimberly|salli|ivy/i;
+const MALE = /(^|[^a-z])male|david|mark|guy|ryan|james|george|daniel|alex|fred|thomas|oliver|aaron|rishi|brian|matthew|joey|justin|kevin|arthur/i;
 
 export function HvacVoiceReceptionist() {
   const [state, setState] = useState<"idle" | "ringing" | "live" | "ended">("idle");
@@ -51,33 +55,48 @@ export function HvacVoiceReceptionist() {
   }, [state]);
   useEffect(() => () => { cancelled.current = true; if ("speechSynthesis" in window) window.speechSynthesis.cancel(); }, []);
 
-  const getVoices = () => new Promise<SpeechSynthesisVoice[]>((resolve) => {
-    const v = window.speechSynthesis.getVoices();
-    if (v.length) return resolve(v);
-    const done = () => resolve(window.speechSynthesis.getVoices());
+  // Voices are chosen once and reused, so no line waits for the browser to look them up again.
+  const voicesRef = useRef<{ agent?: SpeechSynthesisVoice; caller?: SpeechSynthesisVoice; sameVoice: boolean } | null>(null);
+
+  const loadVoices = () => new Promise<void>((resolve) => {
+    if (voicesRef.current) return resolve();
+    const pick = () => {
+      const all = window.speechSynthesis.getVoices().filter((v) => v.lang.toLowerCase().startsWith("en"));
+      if (!all.length) return;
+      const pool = all.some((v) => v.localService) ? all.filter((v) => v.localService) : all; // local voices start faster than network voices
+      const label = (v: SpeechSynthesisVoice) => `${v.name} ${v.voiceURI}`;
+      const isFemale = (v: SpeechSynthesisVoice) => FEMALE.test(label(v));
+      const agent = pool.find(isFemale) || pool[0];
+      const caller = pool.find((v) => v !== agent && !isFemale(v) && MALE.test(label(v)));
+      voicesRef.current = { agent, caller: caller || agent, sameVoice: !caller };
+    };
+    pick();
+    if (voicesRef.current) return resolve();
+    const done = () => { pick(); resolve(); };
     window.speechSynthesis.addEventListener("voiceschanged", done, { once: true });
     setTimeout(done, 1200); // some browsers never fire the event
   });
 
+  useEffect(() => { if ("speechSynthesis" in window) void loadVoices(); }, []);
+
   const say = (line: Line) => new Promise<void>((resolve) => {
-    const ms = 900 + line.text.length * 38;
+    const ms = 500 + line.text.length * 30;
     if (!soundRef.current || !("speechSynthesis" in window)) { setTimeout(resolve, ms); return; }
-    getVoices().then((all) => {
-      if (cancelled.current) return resolve();
-      const voices = all.filter((v) => v.lang.toLowerCase().startsWith("en"));
-      const female = voices.find((v) => /female|samantha|zira|aria|jenny|libby|sonia|google uk english female|google us english/i.test(v.name)) || voices[0];
-      const male = voices.find((v) => v !== female && /male|daniel|david|guy|ryan|google uk english male/i.test(v.name)) || voices.find((v) => v !== female) || voices[0];
-      const u = new SpeechSynthesisUtterance(line.text);
-      if (line.who === "agent" ? female : male) u.voice = (line.who === "agent" ? female : male)!;
-      u.lang = u.voice?.lang || "en-US";
-      u.rate = line.who === "agent" ? 1.02 : 1.08; u.pitch = line.who === "agent" ? 1.1 : 0.9;
-      let finished = false;
-      const end = () => { if (!finished) { finished = true; resolve(); } };
-      u.onend = end; u.onerror = end;
-      window.speechSynthesis.resume(); // Chrome sometimes starts paused
-      window.speechSynthesis.speak(u);
-      setTimeout(end, ms + 8000); // safety
-    });
+    if (cancelled.current) return resolve();
+    const vs = voicesRef.current;
+    const isAgent = line.who === "agent";
+    const voice = isAgent ? vs?.agent : vs?.caller;
+    const u = new SpeechSynthesisUtterance(line.text);
+    if (voice) u.voice = voice;
+    u.lang = voice?.lang || "en-US";
+    u.rate = isAgent ? 1.08 : 1.12;
+    u.pitch = isAgent ? 1.1 : vs?.sameVoice ? 0.55 : 0.9; // if the phone has one voice only, a low pitch makes the caller sound male
+    let finished = false;
+    const end = () => { if (!finished) { finished = true; resolve(); } };
+    u.onend = end; u.onerror = end;
+    window.speechSynthesis.resume(); // Chrome sometimes starts paused
+    window.speechSynthesis.speak(u);
+    setTimeout(end, 3000 + line.text.length * 90); // safety if the browser never reports the end
   });
 
   const toggleSound = () => {
@@ -89,17 +108,17 @@ export function HvacVoiceReceptionist() {
   async function start() {
     cancelled.current = false; setFields([]); setActions([]); setIdx(-1); setSecs(0);
     setState("ringing"); track("demo_start", { slug: "hvac-voice-receptionist" });
-    await new Promise((r) => setTimeout(r, 1600));
+    await Promise.all(["speechSynthesis" in window ? loadVoices() : Promise.resolve(), new Promise((r) => setTimeout(r, 900))]);
     if (cancelled.current) return;
     setState("live");
     for (let i = 0; i < CALL.length; i++) {
       if (cancelled.current) return;
       setIdx(i);
       const line = CALL[i];
-      await say(line);
       if (line.fill) setFields((f) => [...f.filter(([k]) => !line.fill!.some(([n]) => n === k)), ...line.fill!]);
-      if (line.action === "booking") for (const a of ACTIONS.slice(0, 3)) { await new Promise((r) => setTimeout(r, 350)); setActions((x) => [...x, a.id]); }
-      await new Promise((r) => setTimeout(r, 250));
+      await say(line);
+      if (line.action === "booking") for (const a of ACTIONS.slice(0, 3)) { await new Promise((r) => setTimeout(r, 200)); setActions((x) => [...x, a.id]); }
+      await new Promise((r) => setTimeout(r, 60));
     }
     setActions((x) => [...x, "mail"]);
     setState("ended"); track("demo_complete", { slug: "hvac-voice-receptionist" });
