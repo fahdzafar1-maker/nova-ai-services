@@ -5,6 +5,7 @@
   "metaDescription": "What a complete AI phone receptionist costs per month in 2026: estimates by call volume, tools included, and what cheap phone bots leave out.",
   "excerpt": "A practical estimate of monthly AI phone receptionist costs in 2026, including per-minute voice costs, integrations, and what drives the real budget.",
   "date": "2026-10-30",
+  "updated": "2026-11-01",
   "readMins": 5,
   "tags": [
     "AI phone receptionist",
@@ -83,7 +84,7 @@
     },
     {
       "type": "p",
-      "text": "These estimates align with published platform pricing ranges. Firecrawl reported in September 2026 that Vapi Build costs **$0.05 per call minute** for orchestration and hosting, with speech, model, and phone costs on top. Retell AI publicly states **$0.07 to $0.31 per minute** for AI voice agents, depending on model, voice, telephony, and add-ons."
+      "text": "These estimates align with published platform pricing ranges. Firecrawl reported in September 2026 that Vapi Build costs **$0.05 per call minute** for orchestration and hosting, with speech, model, and phone costs on top. Retell AI publicly states **$0.07 to $0.31 per minute** for AI voice agents, depending on model, voice, telephony, and add-ons. For published monthly plans and per-minute rates of off-the-shelf services, see [How Much Does an AI Receptionist Cost in 2026?](/blog/ai-receptionist-cost)"
     },
     {
       "type": "p",
@@ -107,7 +108,7 @@
     },
     {
       "type": "p",
-      "text": "If you want to see what that can look like for healthcare, review this [clinic AI receptionist demo](/demos/clinic-ai-receptionist). If your business depends on property inquiries, a focused [AI voice receptionist for real estate](/solutions/ai-voice-receptionist-real-estate) setup may fit better. Dental practices can also explore a more specific [AI receptionist for dental clinics](/solutions/ai-receptionist-dental-clinic) approach."
+      "text": "If you want to see what that can look like for healthcare, review this [clinic AI receptionist demo](/demos/clinic-ai-receptionist). If your business depends on property inquiries, a focused [AI voice receptionist for real estate](/solutions/ai-voice-receptionist-real-estate) setup may fit better. Dental practices can also explore a more specific [AI receptionist for dental clinics](/solutions/ai-receptionist-dental-clinic) approach. Home-service businesses can look at an [AI answering service for HVAC and plumbing companies](/solutions/ai-answering-service-hvac)."
     },
     {
       "type": "h2",
