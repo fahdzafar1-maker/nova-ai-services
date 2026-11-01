@@ -171,6 +171,19 @@ export default async function SolutionPage({ params }: { params: Promise<{ slug:
         </div>
       </section>
 
+      {s.guides && s.guides.length > 0 && (
+        <section className="wrap mt-20">
+          <h2 className="h-display text-2xl">Read next: cost guides</h2>
+          <ul className="mt-6 max-w-3xl space-y-3">
+            {s.guides.map((g) => (
+              <li key={g.href}>
+                <Link href={g.href} className="text-base text-cyan underline underline-offset-2 hover:text-white">{g.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {related.length > 0 && (
         <section className="wrap mt-20">
           <h2 className="h-display text-2xl">Related solutions</h2>
