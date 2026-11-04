@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: `${SITE.name} — ${SITE.tagline}`, description: SITE.description, images: ["/og.png"] },
   icons: { icon: "/icon.svg" },
   alternates: { canonical: "/" },
+  // Meta Business Manager domain verification for fahdaiservices.com ("Fahd AI Services" portfolio).
+  other: { "facebook-domain-verification": "u6lp1a1d9yuhepr5euvox956bkrv7a" },
 };
 
 export const viewport: Viewport = { themeColor: "#030B1E", width: "device-width", initialScale: 1 };

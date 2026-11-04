@@ -10,7 +10,7 @@ export const SITE = {
   description:
     "We build intelligent AI agents, automated workflows, custom websites, and business systems that help companies save time, improve customer experience, and scale their operations.",
   founder: "Fahd Zafar",
-  email: "fahdzafar73@gmail.com",
+  email: "info@fahdaiservices.com",
   whatsapp: "+92 346 6998833",
   whatsappLink: "https://wa.me/923466998833",
   location: "Pakistan · serving clients worldwide",
