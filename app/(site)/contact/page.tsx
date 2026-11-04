@@ -30,6 +30,22 @@ export default async function ContactPage() {
             </ul>
           </div>
           <div className="card p-6">
+            <h2 className="font-display text-lg font-semibold text-white">Company details</h2>
+            <dl className="mt-4 space-y-2.5 text-sm">
+              {[
+                ["Legal name", SITE.legal.name],
+                ["Trade name", SITE.name],
+                ["SECP LLP Reg. No.", SITE.legal.secpNo],
+                ["NTN", SITE.legal.ntn],
+                ["Address", SITE.legal.address],
+                ["Phone", SITE.whatsapp],
+                ["Email", SITE.email],
+              ].map(([k, v]) => (
+                <div key={k}><dt className="text-xs text-silver-400">{k}</dt><dd className="text-white">{v}</dd></div>
+              ))}
+            </dl>
+          </div>
+          <div className="card p-6">
             <h2 className="font-display text-lg font-semibold text-white">What happens next</h2>
             <ol className="mt-4 space-y-3 text-sm text-silver">
               {["You get a reference number right away.", "We review your request and reply, usually within one business day.", "A short async call or written Q&A to understand your needs.", "You receive a clear plan and fixed quote. No obligation."].map((t, i) => (

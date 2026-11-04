@@ -14,6 +14,15 @@ export const SITE = {
   whatsapp: "+92 346 6998833",
   whatsappLink: "https://wa.me/923466998833",
   location: "Pakistan · serving clients worldwide",
+  // Legal entity behind the trade name. Must match the SECP / FBR certificates exactly
+  // (Meta Business Verification compares these with the documents).
+  legal: {
+    name: "Zafar Ullah Khan and Sons LLP",
+    secpNo: "0291410",
+    ntn: "I353516",
+    address: "1st Floor, Zafar Medicine, Tank Adda Chowk, Dera Ismail Khan, Khyber Pakhtunkhwa, Pakistan",
+    country: "Pakistan",
+  },
   // Company milestones — confirmed by the owner (Oct 2026). Update here when they change.
   stats: [
     { value: 2, suffix: "", label: "Years delivering AI services" },

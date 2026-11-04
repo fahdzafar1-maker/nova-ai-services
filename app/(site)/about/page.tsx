@@ -48,6 +48,8 @@ export default function AboutPage() {
             <p>Most businesses don't lose customers because of their product. They lose them because a message went unanswered, a call was missed or a follow-up never happened.</p>
             <p>Our mission is to help businesses reduce repetitive work, improve customer response, connect the tools they already use and operate more efficiently through intelligent automation — without losing the human touch where it matters.</p>
             <p>Founded by {SITE.founder}, we work async-first with clients across time zones: clear written plans, recorded demos and dependable support.</p>
+            <p>For clinics and other appointment-based businesses we build AI receptionists that answer phone calls, WhatsApp assistants that reply to patients and book appointments, and website chat — with human handoff for anything sensitive.</p>
+            <p className="text-sm text-silver-400">{SITE.name} is a trade name of {SITE.legal.name}, registered with the Securities and Exchange Commission of Pakistan (LLP Reg. No. {SITE.legal.secpNo}) and the Federal Board of Revenue (NTN {SITE.legal.ntn}). Registered address: {SITE.legal.address}.</p>
           </div>
         </div>
         <div className="relative mx-auto w-full max-w-sm">

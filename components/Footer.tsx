@@ -18,6 +18,7 @@ export function Footer() {
             <li><Link className="text-silver hover:text-white" href="/solutions">Solutions</Link></li>
             <li><Link className="text-silver hover:text-white" href="/blog">Blog</Link></li>
             <li><Link className="text-silver hover:text-white" href="/privacy">Privacy</Link></li>
+            <li><Link className="text-silver hover:text-white" href="/terms">Terms</Link></li>
           </ul>
         </div>
         <div>
@@ -30,8 +31,13 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-white/[0.05]">
+        <p className="wrap py-5 text-xs leading-relaxed text-silver-400">
+          {SITE.name} is a trade name of <b className="font-semibold text-silver">{SITE.legal.name}</b> (SECP LLP Reg. No. {SITE.legal.secpNo}, NTN {SITE.legal.ntn}). Registered address: {SITE.legal.address}. Phone {SITE.whatsapp} · {SITE.email}
+        </p>
+      </div>
+      <div className="border-t border-white/[0.05]">
         <div className="wrap flex flex-col justify-between gap-2 py-5 text-xs text-silver-600 sm:flex-row">
-          <span>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} {SITE.legal.name}. All rights reserved.</span>
           <span>Demos use synthetic sample data. No real customer information is shown.</span>
         </div>
       </div>
